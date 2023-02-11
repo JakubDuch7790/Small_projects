@@ -14,6 +14,8 @@ namespace BitCoinThief
         public string BtcWalletAdress { get; set; }
         public string BtcWalletPassword { get; set; }
 
+        
+
 
 
 

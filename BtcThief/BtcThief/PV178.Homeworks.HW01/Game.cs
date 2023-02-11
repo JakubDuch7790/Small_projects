@@ -61,7 +61,10 @@ namespace BitCoinThief
             }
         }
 
-
+        public void IsGitignoreWorking()
+        {
+            return;
+        }
     }
 
     

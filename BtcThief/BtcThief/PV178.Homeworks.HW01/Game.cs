@@ -26,6 +26,7 @@ namespace PV178.Homeworks.HW01
                 Console.WriteLine("Invalid name, try again");
                 AskForName();
             }
+            Console.WriteLine($"Your hacking nickname for this game will be {playersNickname}");
             return playersNickname;
         }
 
@@ -36,7 +37,7 @@ namespace PV178.Homeworks.HW01
 
         public void Start()
         {
-            throw new NotImplementedException();
+            AskForName();
         }
         
     }

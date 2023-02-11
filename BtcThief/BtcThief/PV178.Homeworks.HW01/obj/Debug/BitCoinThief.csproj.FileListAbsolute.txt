@@ -1,0 +1,8 @@
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\bin\Debug\PV178.Homeworks.HW01.exe.config
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\bin\Debug\PV178.Homeworks.HW01.exe
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\bin\Debug\PV178.Homeworks.HW01.pdb
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\obj\Debug\BitCoinThief.csproj.AssemblyReference.cache
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\obj\Debug\BitCoinThief.csproj.SuggestedBindingRedirects.cache
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\obj\Debug\BitCoinThief.csproj.CoreCompileInputs.cache
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\obj\Debug\PV178.Homeworks.HW01.exe
+C:\Users\Duško\Source\Repos\JakubDuch7790\Small_projects\BtcThief\BtcThief\PV178.Homeworks.HW01\obj\Debug\PV178.Homeworks.HW01.pdb

@@ -1,11 +1,23 @@
-﻿namespace PV178.Homeworks.HW01;
+﻿using PV178.Homeworks.HW01;
 
-class Program
+namespace BitCoinThief
 {
-    static void Main(string[] args)
+    class Program
     {
-        while (true)
+        static void Main(string[] args)
         {
+            MainLoop();
+        }
+
+        public static void MainLoop()
+        {
+            while (true)
+            {
+                var game = new Game();
+
+                game.Start();
+
+            }
         }
     }
 }

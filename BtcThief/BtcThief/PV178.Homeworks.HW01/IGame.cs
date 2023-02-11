@@ -1,4 +1,4 @@
-﻿namespace PV178.Homeworks.HW01
+﻿namespace BitCoinThief
 {
     /// <summary>
     /// Allows user to play a game.
@@ -8,7 +8,7 @@
         bool IsPlayersBtcWalletEmpty { get; }
         bool IsCriminalityLevelReached { get; }
         bool IsSurrendered { get;}
-        void Start();
+        void Start(Player player);
         void EndGame();
         string AskForName();
     }

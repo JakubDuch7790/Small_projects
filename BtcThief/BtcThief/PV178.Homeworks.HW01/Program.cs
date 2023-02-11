@@ -6,18 +6,15 @@ namespace BitCoinThief
     {
         static void Main(string[] args)
         {
-            MainLoop();
+            var game = new Game();
+            var player = new Player(game.AskForName());
+
+            game.Start(player);
+
+            game.EndGame();
+
         }
 
-        public static void MainLoop()
-        {
-            while (true)
-            {
-                var game = new Game();
-
-                game.Start();
-
-            }
-        }
+        
     }
 }

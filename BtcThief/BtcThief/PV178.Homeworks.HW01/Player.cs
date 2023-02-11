@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PV178.Homeworks.HW01
+namespace BitCoinThief
 {
-    internal class Player : IPlayer
+    public class Player : IPlayer
     {
         public double BtcWallet { get; set; }
         public int HackingSkill { get; set; }
         public int CriminalityLevel { get; set; }
         public string PlayersName { get; set; }
+        public bool IsSurrendering { get; private set; }
 
         public Player(string playersName, double btcWallet = 0.05, int hackingSkill = 26, int criminalityLevel = 0)
         {
@@ -21,7 +22,7 @@ namespace PV178.Homeworks.HW01
             PlayersName = playersName;
         }
 
-        public Person Find()
+        public void Find()
         {
             throw new NotImplementedException();
         }
@@ -56,9 +57,9 @@ namespace PV178.Homeworks.HW01
             throw new NotImplementedException();
         }
 
-        public void Surrender()
+        public bool Surrender()
         {
-            throw new NotImplementedException();
+            return IsSurrendering = true;
         }
     }
 }

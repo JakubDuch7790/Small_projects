@@ -25,9 +25,6 @@ namespace BitCoinThief
             BtcWalletAdress = Generator.GetBtcAddress();
             BtcWalletPassword = Generator.GetPassword();
         }
-        protected double CurrentPersonBtcCashAmountGenerator()
-        {
-
-        }
+        protected abstract double CurrentPersonBtcCashAmountGenerator();
     }
 }

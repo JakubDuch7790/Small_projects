@@ -15,18 +15,15 @@ namespace PV178.Homeworks.HW01
         private const double BtcCashUpperBound = 0.5;
         private const double BtcCashLowerBound = 0;
 
-
-
-        
         public CommonPerson() : base()
         {
             ChanceOfHavingWallet = chanceOfHavingBtcWallet;
             ChanceOfDiscovery = chanceOfDiscovery;
             DefenceSequence = defenceSequence;
-            BtcCashamount = CommonPersonBtcCashAmountGenerator();
+            BtcCashamount = CurrentPersonBtcCashAmountGenerator();
         }
 
-        private double CommonPersonBtcCashAmountGenerator()
+        protected override double CurrentPersonBtcCashAmountGenerator()
         {
             Random random = new Random();
             return random.NextDouble() * (BtcCashUpperBound - BtcCashLowerBound) + BtcCashLowerBound;

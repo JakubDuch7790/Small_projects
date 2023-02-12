@@ -2,9 +2,9 @@
 {
     internal interface IPlayer
     {
-        double BtcWallet { get; set; }
-        int CriminalityLevel { get; set; }
-        int HackingSkill { get; set; }
+        double BtcWallet { get; }
+        int CriminalityLevel { get; }
+        int HackingSkill { get; }
         string PlayersName { get; }
         bool IsSurrendering { get;}
         void Find();

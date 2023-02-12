@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonPerson.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Hacking.cs" />
     <Compile Include="Helpers\Generator.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="IPlayer.cs" />

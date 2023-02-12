@@ -8,10 +8,10 @@ namespace BitCoinThief
 {
     public class Player : IPlayer
     {
-        public double BtcWallet { get; set; }
-        public int HackingSkill { get; set; }
-        public int CriminalityLevel { get; set; }
-        public string PlayersName { get; set; }
+        public double BtcWallet { get; private set; }
+        public int HackingSkill { get; private set; }
+        public int CriminalityLevel { get; private set; }
+        public string PlayersName { get; private set; }
         public bool IsSurrendering { get; private set; }
 
         public Player(string playersName, double btcWallet = 0.05, int hackingSkill = 26, int criminalityLevel = 0)

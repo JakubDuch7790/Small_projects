@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PV178.Homeworks.HW01;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,31 @@ namespace BitCoinThief
             PlayersName = playersName;
         }
 
-        public void Find()
+        public Person Find()
         {
-            throw new NotImplementedException();
+            Random random = new Random();
+            Person foundedPerson;
+
+            Person[] people1 = new Person[] { new CommonPerson(), new RarePerson(), new EpicPerson() };
+
+            if (random.Next(101) < (people1[0].ChanceOfDiscovery))
+            {
+                foundedPerson = people1[0];
+            }
+            else if (random.Next(101) < people1[0].ChanceOfDiscovery + people1[1].ChanceOfDiscovery)
+            {
+                foundedPerson = people1[1];
+            }
+            else
+            {
+                foundedPerson = people1[2];
+            }
+
+            Console.WriteLine($"You have found some guy named {foundedPerson.Name} and his IP adress is {foundedPerson.IpAdress}");
+
+            Console.WriteLine(foundedPerson.GetType());
+
+            return foundedPerson;
         }
 
         public void Hack()

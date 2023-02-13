@@ -1,13 +1,13 @@
 ﻿namespace BitCoinThief
 {
-    internal interface IPlayer
+    public interface IPlayer
     {
         double BtcWallet { get; }
         int CriminalityLevel { get; }
         int HackingSkill { get; }
         string PlayersName { get; }
         bool IsSurrendering { get;}
-        void Find();
+        Person Find();
         void Hack();
         void Send();
         void Bribe();

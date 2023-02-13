@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PV178.Homeworks.HW01;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,19 +52,16 @@ namespace BitCoinThief
             IsGameRunning = true;
             while (IsGameRunning)
             {
+
                 System.Console.WriteLine($"[{player.PlayersName}]");
                 System.Console.WriteLine("Commands: 1. Find" + Environment.NewLine + 
                     "2. Hack, send, bribe, learn, info, win, surrender");
 
                 Console.WriteLine("Choose command");
+                player.Find();
 
                 CheckForEndGame(player);
             }
-        }
-
-        public void IsGitignoreWorking()
-        {
-            return;
         }
     }
 

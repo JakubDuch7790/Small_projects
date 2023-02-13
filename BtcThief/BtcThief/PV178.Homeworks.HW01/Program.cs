@@ -11,7 +11,6 @@ namespace BitCoinThief
 
             game.Start(player);
 
-            game.EndGame();
 
         }
 

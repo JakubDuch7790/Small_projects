@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BitCoinThief
 {
-    abstract class Person
+    public abstract class Person
     {
         public int ChanceOfHavingWallet { get; protected set; }
         public string Name { get; private set; }

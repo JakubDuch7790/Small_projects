@@ -30,17 +30,19 @@ namespace BitCoinThief
 
             Person[] people1 = new Person[] { new CommonPerson(), new RarePerson(), new EpicPerson() };
 
-            if (random.Next(101) < (people1[0].ChanceOfDiscovery))
+            int personsDiscovery = random.Next(101);
+
+            if (personsDiscovery < (people1[2].ChanceOfDiscovery))
             {
-                foundedPerson = people1[0];
+                foundedPerson = people1[2];
             }
-            else if (random.Next(101) < people1[0].ChanceOfDiscovery + people1[1].ChanceOfDiscovery)
+            else if (personsDiscovery < people1[2].ChanceOfDiscovery + people1[1].ChanceOfDiscovery)
             {
                 foundedPerson = people1[1];
             }
             else
             {
-                foundedPerson = people1[2];
+                foundedPerson = people1[0];
             }
 
             Console.WriteLine($"You have found some guy named {foundedPerson.Name} and his IP adress is {foundedPerson.IpAdress}");

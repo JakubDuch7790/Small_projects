@@ -10,8 +10,6 @@ namespace BitCoinThief
             var player = new Player(game.AskForName());
 
             game.Start(player);
-
-
         }
 
         

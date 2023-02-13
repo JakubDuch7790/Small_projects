@@ -58,6 +58,7 @@ namespace BitCoinThief
                     "2. Hack, send, bribe, learn, info, win, surrender");
 
                 Console.WriteLine("Choose command");
+
                 player.Find();
 
                 CheckForEndGame(player);

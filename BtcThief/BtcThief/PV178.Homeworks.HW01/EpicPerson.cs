@@ -15,6 +15,13 @@ namespace PV178.Homeworks.HW01
         private const double BtcCashUpperBound = 2.5;
         private const double BtcCashLowerBound = 1;
 
+        public EpicPerson() : base()
+        {
+            ChanceOfDiscovery = chanceOfDiscovery;
+            ChanceOfHavingWallet = chanceOfHavingBtcWallet;
+            DefenceSequence = defenceSequence;
+        }
+
         protected override double CurrentPersonBtcCashAmountGenerator()
         {
             Random random = new Random();

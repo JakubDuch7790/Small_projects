@@ -24,6 +24,7 @@ namespace BitCoinThief
         public string AskForName()
         {
             string playersNickname;
+
             Console.WriteLine("Enter your nickname.");
 
             playersNickname = Console.ReadLine();
@@ -31,15 +32,18 @@ namespace BitCoinThief
             if (playersNickname.Length <= 0)
             {
                 Console.WriteLine("Invalid name, try again.");
+
                 return AskForName();
             }
             Console.WriteLine($"Your hacking nickname for this game will be {playersNickname}.");
+
             return playersNickname;
         }
 
         public void EndGame()
         {
             Console.WriteLine("EndGame");
+
             IsGameRunning = !IsGameRunning;
         }
 
@@ -48,12 +52,14 @@ namespace BitCoinThief
             if (player.CriminalityLevel >= 5 || player.BtcWallet <= 0 || player.IsSurrendering)
             {
                 Console.WriteLine("EndGame Hoe, and you lose.");
+
                 EndGame();
             }
         }
         public void Start(Player player)
         {
             IsGameRunning = true;
+
             while (IsGameRunning)
             {
                 Console.WriteLine("");
@@ -73,6 +79,7 @@ namespace BitCoinThief
 
             Console.WriteLine("");
             Console.WriteLine("Commands: ");
+            Console.WriteLine("");
             Console.WriteLine("1. Find ");
             Console.WriteLine("2. Hack ");
             Console.WriteLine("3. Send");
@@ -82,21 +89,34 @@ namespace BitCoinThief
             Console.WriteLine("7. Win");
             Console.WriteLine("8. Surrender");
 
+            Console.WriteLine("");
             Console.WriteLine("Choose command!");
+            Console.WriteLine("");
 
             int.TryParse(Console.ReadLine(), out int command);
+
+            Console.WriteLine("");
 
             switch (command)
             {
                 case 1:
+
                     CurrentHackedPerson = player.Find();
+
+                    Console.WriteLine($"You have found some guy named {CurrentHackedPerson.Name} and his IP adress is {CurrentHackedPerson.IpAdress}.");
+
+                    Console.WriteLine(CurrentHackedPerson.GetType());
+
                     break;
 
                 case 2:
+
                     player.Hack(CurrentHackedPerson);
+
                     break;
 
                 case 3:
+
                     player.Send(CurrentHackedPerson);
 
                     CurrentHackedPerson = null;
@@ -104,29 +124,45 @@ namespace BitCoinThief
                     break;
 
                 case 4:
+
                     player.Bribe();
+
+                    Console.WriteLine($"Your CriminalityLevel has decreased to {player.CriminalityLevel}.");
+
                     break;
 
                 case 5:
+
                     player.Learn();
+
+                    Console.WriteLine($"Your hacking skill has increased to {player.HackingSkill}.");
+
                     break;
 
                 case 6:
+
                     info = player.Info();
+
                     Console.WriteLine(info);
+
                     break;
 
                 case 7:
+
                     IsGameRunning =  player.Win();
+
                     break;
 
                 case 8:
+
                     IsSurrendered = player.Surrender();
+
                     break;
 
                 default:
 
                     Console.WriteLine("Invalid input, try again!");
+
                     break;
             }
         }

@@ -47,10 +47,6 @@ namespace BitCoinThief
                 foundedPerson = people1[0];
             }
 
-            Console.WriteLine($"You have found some guy named {foundedPerson.Name} and his IP adress is {foundedPerson.IpAdress}.");
-
-            Console.WriteLine(foundedPerson.GetType());
-
             return foundedPerson;
         }
 
@@ -92,7 +88,7 @@ namespace BitCoinThief
             {
                 CriminalityLevel += 1;
 
-                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}");
+                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}.");
             }
 
             Console.WriteLine($"Actual Hacking Succes after this round is {ActualHackingSucces}.");
@@ -126,14 +122,12 @@ namespace BitCoinThief
         {
             BtcWallet -= 0.05;
             CriminalityLevel -= 1;
-            Console.WriteLine($"Your CriminalityLevel has decreased to {CriminalityLevel}.");
         }
 
         public void Learn()
         {
             BtcWallet -= 0.005;
             HackingSkill += 1;
-            Console.WriteLine($"Your hacking skill has increased to {HackingSkill}.");
         }
 
         public string Info()

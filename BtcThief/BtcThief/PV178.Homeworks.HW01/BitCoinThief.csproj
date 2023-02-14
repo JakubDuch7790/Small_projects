@@ -56,7 +56,6 @@
     <Compile Include="CommonPerson.cs" />
     <Compile Include="EpicPerson.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Hack.cs" />
     <Compile Include="Helpers\Generator.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="IPlayer.cs" />

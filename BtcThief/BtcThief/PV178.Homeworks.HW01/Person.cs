@@ -17,6 +17,16 @@ namespace BitCoinThief
         public double BtcCashamount { get; protected set; }
         public int ChanceOfDiscovery { get; protected set; }
         public int[] DefenceSequence { get; protected set; }
+        public int DefenceSequencePointer { get; set; }
+        public bool DoesHaveAWallet 
+        {
+            get
+            {
+                Random random = new Random();
+
+                return random.Next(101) < ChanceOfHavingWallet;
+            }
+        }
 
         public Person()
         {
@@ -24,7 +34,15 @@ namespace BitCoinThief
             IpAdress = Generator.GetIp();
             BtcWalletAdress = Generator.GetBtcAddress();
             BtcWalletPassword = Generator.GetPassword();
+            DefenceSequencePointer = 0;
         }
         protected abstract double CurrentPersonBtcCashAmountGenerator();
+
+        public bool DoesHaveAWallet()
+        {
+            Random random = new Random();
+
+            return random.Next(101) < ChanceOfHavingWallet;
+        }
     }
 }

@@ -95,7 +95,7 @@ namespace BitCoinThief
                     break;
 
                 case 3:
-                    player.Send();
+                    player.Send(CurrentHackedPerson);
                     break;
 
                 case 4:

@@ -14,6 +14,7 @@ namespace BitCoinThief
         public int CriminalityLevel { get; private set; }
         public string PlayersName { get; private set; }
         public bool IsSurrendering { get; private set; }
+        public int ActualHackingSucces { get; private set; }
 
         public Player(string playersName, double btcWallet = 0.05, int hackingSkill = 26, int criminalityLevel = 0)
         {
@@ -27,6 +28,7 @@ namespace BitCoinThief
         {
             Random random = new Random();
             Person foundedPerson;
+            ActualHackingSucces = 0;
 
             Person[] people1 = new Person[] { new CommonPerson(), new RarePerson(), new EpicPerson() };
 
@@ -45,7 +47,7 @@ namespace BitCoinThief
                 foundedPerson = people1[0];
             }
 
-            Console.WriteLine($"You have found some guy named {foundedPerson.Name} and his IP adress is {foundedPerson.IpAdress}");
+            Console.WriteLine($"You have found some guy named {foundedPerson.Name} and his IP adress is {foundedPerson.IpAdress}.");
 
             Console.WriteLine(foundedPerson.GetType());
 
@@ -54,26 +56,84 @@ namespace BitCoinThief
 
         public void Hack(Person foundedPerson)
         {
-            Console.WriteLine($"Current Hacked Person is {foundedPerson.Name}");
+            bool DoesFoundedPersonHaveAWallet;
+
+            Console.WriteLine($"Current Hacked Person is {foundedPerson.Name}.");
+
+            Random random = new Random();
+
+            ActualHackingSucces += random.Next(HackingSkill);
+
+            ActualHackingSucces -= foundedPerson.DefenceSequence[foundedPerson.DefenceSequencePointer];
+
+            if (ActualHackingSucces >= 100)
+            {
+                ActualHackingSucces = 100;
+            }
+            
+            if (ActualHackingSucces >= 30)
+            {
+                DoesFoundedPersonHaveAWallet = foundedPerson.DoesHaveAWallet;
+
+                Console.WriteLine(DoesFoundedPersonHaveAWallet);
+
+                if (!DoesFoundedPersonHaveAWallet)
+                {
+                    Console.WriteLine("This fool does not have a BTC wallet, let's hack another one!");
+                }
+            }
+
+            if (ActualHackingSucces >= 60)
+            {
+                Console.WriteLine(foundedPerson.BtcWalletPassword);
+            }
+
+            if (ActualHackingSucces < 0)
+            {
+                CriminalityLevel += 1;
+
+                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}");
+            }
+
+            Console.WriteLine($"Actual Hacking Succes after this round is {ActualHackingSucces}");
+
+            if (foundedPerson.DefenceSequence.Length - 1 > foundedPerson.DefenceSequencePointer)
+            {
+                foundedPerson.DefenceSequencePointer += 1;
+            }
+            else
+            {
+                foundedPerson.DefenceSequencePointer = 0;
+            }
         }
 
-        public void Send()
+        public void Send(Person foundedplayer)
         {
-            throw new NotImplementedException();
+            Random random = new Random();
+
+            if (random.Next(101) < ActualHackingSucces)
+            {
+                BtcWallet += foundedplayer.BtcCashamount;
+            }
+            else
+            {
+                CriminalityLevel += 1;
+                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}");
+            }
         }
 
         public void Bribe()
         {
             BtcWallet -= 0.05;
             CriminalityLevel -= 1;
-            Console.WriteLine($"Your CriminalityLevel has decreased to {CriminalityLevel}");
+            Console.WriteLine($"Your CriminalityLevel has decreased to {CriminalityLevel}.");
         }
 
         public void Learn()
         {
             BtcWallet -= 0.005;
             HackingSkill += 1;
-            Console.WriteLine($"Your hacking skill has increased to {HackingSkill}");
+            Console.WriteLine($"Your hacking skill has increased to {HackingSkill}.");
         }
 
         public void Info()
@@ -87,11 +147,11 @@ namespace BitCoinThief
         {
             if (BtcWallet >= 5)
             {
-                Console.WriteLine("You have won this game. Congratulation");
-                Console.WriteLine("Now you are officially rich");
+                Console.WriteLine("You have won this game. Congratulation.");
+                Console.WriteLine("Now you are officially rich.");
                 return false;
             }
-            Console.WriteLine("Not enough Bitcoins for win poor asshole");
+            Console.WriteLine("Not enough Bitcoins for win poor asshole.");
             return true;
         }
 

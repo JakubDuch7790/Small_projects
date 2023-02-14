@@ -15,30 +15,31 @@ namespace BitCoinThief
 
         public bool IsCriminalityLevelReached => throw new NotImplementedException();
 
-        public bool IsSurrendered => throw new NotImplementedException();
+        public bool IsSurrendered { get; private set; }
 
-        public bool IsGameRunning { get; set; }
+        public bool IsGameRunning { get; private set; }
 
         public Person CurrentHackedPerson { get; private set; }
 
         public string AskForName()
         {
             string playersNickname;
-            Console.WriteLine("Enter your nickname");
+            Console.WriteLine("Enter your nickname.");
 
             playersNickname = Console.ReadLine();
 
             if (playersNickname.Length <= 0)
             {
-                Console.WriteLine("Invalid name, try again");
+                Console.WriteLine("Invalid name, try again.");
                 return AskForName();
             }
-            Console.WriteLine($"Your hacking nickname for this game will be {playersNickname}");
+            Console.WriteLine($"Your hacking nickname for this game will be {playersNickname}.");
             return playersNickname;
         }
 
         public void EndGame()
         {
+            Console.WriteLine("EndGame");
             IsGameRunning = !IsGameRunning;
         }
 
@@ -46,7 +47,7 @@ namespace BitCoinThief
         {
             if (player.CriminalityLevel >= 5 || player.BtcWallet <= 0 || player.IsSurrendering)
             {
-                Console.WriteLine("EndGame Hoe, and you lose");
+                Console.WriteLine("EndGame Hoe, and you lose.");
                 EndGame();
             }
         }
@@ -62,6 +63,8 @@ namespace BitCoinThief
 
                 CheckForEndGame(player);
             }
+
+            EndGame();
         }
 
         public void ChooseCommand(Player player)
@@ -77,7 +80,7 @@ namespace BitCoinThief
             Console.WriteLine("7. Win");
             Console.WriteLine("8. Surrender");
 
-            Console.WriteLine("Choose command");
+            Console.WriteLine("Choose command!");
 
             int.TryParse(Console.ReadLine(), out int command);
 
@@ -108,16 +111,16 @@ namespace BitCoinThief
                     break;
 
                 case 7:
-                    player.Win();
+                    IsGameRunning =  player.Win();
                     break;
 
                 case 8:
-                    player.Surrender();
+                    IsSurrendered = player.Surrender();
                     break;
 
                 default:
 
-                    Console.WriteLine("Invalid input, try again");
+                    Console.WriteLine("Invalid input, try again!");
                     break;
             }
         }

@@ -13,7 +13,7 @@
         void Bribe();
         void Learn();
         void Info();
-        void Win();
+        bool Win();
         bool Surrender();
 
     }

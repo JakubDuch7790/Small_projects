@@ -8,8 +8,12 @@
         bool IsPlayersBtcWalletEmpty { get; }
         bool IsCriminalityLevelReached { get; }
         bool IsSurrendered { get;}
+        bool IsGameRunning { get; }
+        Person CurrentHackedPerson { get; }
         void Start(Player player);
         void EndGame();
         string AskForName();
+        void CheckForEndGame(Player player);
+        void ChooseCommand(Player player);
     }
 }

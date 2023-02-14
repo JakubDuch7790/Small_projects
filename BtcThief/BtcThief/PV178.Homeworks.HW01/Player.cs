@@ -78,14 +78,21 @@ namespace BitCoinThief
 
         public void Info()
         {
-            Console.WriteLine($"You have {BtcWallet} Bitcoins in your wallet");
+            Console.WriteLine($"You have {BtcWallet} Bitcoins in your wallet.");
             Console.WriteLine("Hacking skill = " + HackingSkill);
-            Console.WriteLine($"Your Criminality Level is {CriminalityLevel}");
+            Console.WriteLine($"Your Criminality Level is {CriminalityLevel}.");
         }
 
-        public void Win()
+        public bool Win()
         {
-            throw new NotImplementedException();
+            if (BtcWallet >= 5)
+            {
+                Console.WriteLine("You have won this game. Congratulation");
+                Console.WriteLine("Now you are officially rich");
+                return false;
+            }
+            Console.WriteLine("Not enough Bitcoins for win poor asshole");
+            return true;
         }
 
         public bool Surrender()

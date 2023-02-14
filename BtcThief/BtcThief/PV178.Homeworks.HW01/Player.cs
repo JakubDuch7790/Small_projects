@@ -95,7 +95,7 @@ namespace BitCoinThief
                 Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}");
             }
 
-            Console.WriteLine($"Actual Hacking Succes after this round is {ActualHackingSucces}");
+            Console.WriteLine($"Actual Hacking Succes after this round is {ActualHackingSucces}.");
 
             if (foundedPerson.DefenceSequence.Length - 1 > foundedPerson.DefenceSequencePointer)
             {
@@ -118,7 +118,7 @@ namespace BitCoinThief
             else
             {
                 CriminalityLevel += 1;
-                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}");
+                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}.");
             }
         }
 
@@ -136,11 +136,12 @@ namespace BitCoinThief
             Console.WriteLine($"Your hacking skill has increased to {HackingSkill}.");
         }
 
-        public void Info()
+        public string Info()
         {
-            Console.WriteLine($"You have {BtcWallet} Bitcoins in your wallet.");
-            Console.WriteLine("Hacking skill = " + HackingSkill);
-            Console.WriteLine($"Your Criminality Level is {CriminalityLevel}.");
+            string info = $"You have {BtcWallet} Bitcoins in your wallet. "
+                        + $"Your Hacking Skill is currently { HackingSkill },"
+                        + $" and Criminality level is at {CriminalityLevel}.";
+            return info;
         }
 
         public bool Win()

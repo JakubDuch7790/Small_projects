@@ -69,6 +69,8 @@ namespace BitCoinThief
 
         public void ChooseCommand(Player player)
         {
+            string info;
+
             Console.WriteLine("");
             Console.WriteLine("Commands: ");
             Console.WriteLine("1. Find ");
@@ -96,6 +98,9 @@ namespace BitCoinThief
 
                 case 3:
                     player.Send(CurrentHackedPerson);
+
+                    CurrentHackedPerson = null;
+
                     break;
 
                 case 4:
@@ -107,7 +112,8 @@ namespace BitCoinThief
                     break;
 
                 case 6:
-                    player.Info();
+                    info = player.Info();
+                    Console.WriteLine(info);
                     break;
 
                 case 7:

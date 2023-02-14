@@ -12,7 +12,7 @@
         void Send(Person foundedPerson);
         void Bribe();
         void Learn();
-        void Info();
+        string Info();
         bool Win();
         bool Surrender();
 

@@ -52,9 +52,9 @@ namespace BitCoinThief
             return foundedPerson;
         }
 
-        public void Hack(/*Person foundedPerson*/)
+        public void Hack(Person foundedPerson)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Current Hacked Person is {foundedPerson.Name}");
         }
 
         public void Send()

@@ -19,6 +19,8 @@ namespace BitCoinThief
 
         public bool IsGameRunning { get; set; }
 
+        public Person CurrentHackedPerson { get; private set; }
+
         public string AskForName()
         {
             string playersNickname;
@@ -29,7 +31,7 @@ namespace BitCoinThief
             if (playersNickname.Length <= 0)
             {
                 Console.WriteLine("Invalid name, try again");
-                AskForName();
+                return AskForName();
             }
             Console.WriteLine($"Your hacking nickname for this game will be {playersNickname}");
             return playersNickname;
@@ -44,7 +46,7 @@ namespace BitCoinThief
         {
             if (player.CriminalityLevel >= 5 || player.BtcWallet <= 0 || player.IsSurrendering)
             {
-                Console.WriteLine("EndGame Hoe");
+                Console.WriteLine("EndGame Hoe, and you lose");
                 EndGame();
             }
         }
@@ -53,7 +55,7 @@ namespace BitCoinThief
             IsGameRunning = true;
             while (IsGameRunning)
             {
-
+                Console.WriteLine("");
                 Console.Write($"[{player.PlayersName}] ");
 
                 ChooseCommand(player);
@@ -64,7 +66,7 @@ namespace BitCoinThief
 
         public void ChooseCommand(Player player)
         {
-
+            Console.WriteLine("");
             Console.WriteLine("Commands: ");
             Console.WriteLine("1. Find ");
             Console.WriteLine("2. Hack ");
@@ -77,16 +79,16 @@ namespace BitCoinThief
 
             Console.WriteLine("Choose command");
 
-            var chosenCommand = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out int command);
 
-            switch (chosenCommand)
+            switch (command)
             {
                 case 1:
-                    player.Find();
+                    CurrentHackedPerson = player.Find();
                     break;
 
                 case 2:
-                    player.Hack();
+                    player.Hack(CurrentHackedPerson);
                     break;
 
                 case 3:

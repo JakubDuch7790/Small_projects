@@ -10,5 +10,9 @@ namespace PV178.Homeworks.HW01
     {
         public int ActualSucces { get; set; }
 
+        public Hack(int actualSucces = 0)
+        {
+            ActualSucces = actualSucces;
+        }
     }
 }

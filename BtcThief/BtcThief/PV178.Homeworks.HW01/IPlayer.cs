@@ -8,7 +8,7 @@
         string PlayersName { get; }
         bool IsSurrendering { get;}
         Person Find();
-        void Hack();
+        //void Hack();
         void Send();
         void Bribe();
         void Learn();

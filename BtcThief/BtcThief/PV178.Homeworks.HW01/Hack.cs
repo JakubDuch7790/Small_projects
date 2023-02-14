@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW01
 {
-    internal class Hacking
+    internal class Hack
     {
+        public int ActualSucces { get; set; }
+
     }
 }

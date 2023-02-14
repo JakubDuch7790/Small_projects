@@ -52,7 +52,7 @@ namespace BitCoinThief
             return foundedPerson;
         }
 
-        public void Hack()
+        public void Hack(/*Person foundedPerson*/)
         {
             throw new NotImplementedException();
         }
@@ -64,17 +64,23 @@ namespace BitCoinThief
 
         public void Bribe()
         {
-            throw new NotImplementedException();
+            BtcWallet -= 0.05;
+            CriminalityLevel -= 1;
+            Console.WriteLine($"Your CriminalityLevel has decreased to {CriminalityLevel}");
         }
 
         public void Learn()
         {
-            throw new NotImplementedException();
+            BtcWallet -= 0.005;
+            HackingSkill += 1;
+            Console.WriteLine($"Your hacking skill has increased to {HackingSkill}");
         }
 
         public void Info()
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"You have {BtcWallet} Bitcoins in your wallet");
+            Console.WriteLine("Hacking skill = " + HackingSkill);
+            Console.WriteLine($"Your Criminality Level is {CriminalityLevel}");
         }
 
         public void Win()

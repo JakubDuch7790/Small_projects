@@ -26,6 +26,7 @@ namespace BitCoinThief
 
         public Person Find()
         {
+            BtcWallet -= 0.01;
             Random random = new Random();
             Person foundedPerson;
             ActualHackingSucces = 0;
@@ -52,7 +53,7 @@ namespace BitCoinThief
 
         public void Hack(Person foundedPerson)
         {
-            bool DoesFoundedPersonHaveAWallet;
+            //bool DoesFoundedPersonHaveAWallet;
 
             Console.WriteLine($"Current Hacked Person is {foundedPerson.Name}.");
 
@@ -66,32 +67,12 @@ namespace BitCoinThief
             {
                 ActualHackingSucces = 100;
             }
-            
-            if (ActualHackingSucces >= 30)
-            {
-                DoesFoundedPersonHaveAWallet = foundedPerson.DoesHaveAWallet;
 
-                Console.WriteLine(DoesFoundedPersonHaveAWallet);
-
-                if (!DoesFoundedPersonHaveAWallet)
-                {
-                    Console.WriteLine("This fool does not have a BTC wallet, let's hack another one!");
-                }
-            }
-
-            if (ActualHackingSucces >= 60)
-            {
-                Console.WriteLine(foundedPerson.BtcWalletPassword);
-            }
 
             if (ActualHackingSucces < 0)
             {
                 CriminalityLevel += 1;
-
-                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}.");
             }
-
-            Console.WriteLine($"Actual Hacking Succes after this round is {ActualHackingSucces}.");
 
             if (foundedPerson.DefenceSequence.Length - 1 > foundedPerson.DefenceSequencePointer)
             {

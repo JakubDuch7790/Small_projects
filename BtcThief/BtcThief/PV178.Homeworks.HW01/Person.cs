@@ -38,11 +38,5 @@ namespace BitCoinThief
         }
         protected abstract double CurrentPersonBtcCashAmountGenerator();
 
-        //public bool DoesHaveAWallet()
-        //{
-        //    Random random = new Random();
-
-        //    return random.Next(101) < ChanceOfHavingWallet;
-        //}
     }
 }

@@ -9,7 +9,7 @@
         bool IsSurrendering { get;}
         Person Find();
         void Hack(Person foundedPerson);
-        void Send(Person foundedPerson);
+        bool Send(Person foundedPerson);
         void Bribe();
         void Learn();
         string Info();

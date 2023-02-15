@@ -76,6 +76,8 @@ namespace BitCoinThief
         public void ChooseCommand(Player player)
         {
             string info;
+            bool successfulSend;
+            bool isWinner;
 
             Console.WriteLine("");
             Console.WriteLine("Commands: ");
@@ -117,7 +119,17 @@ namespace BitCoinThief
 
                 case 3:
 
-                    player.Send(CurrentHackedPerson);
+                    successfulSend = player.Send(CurrentHackedPerson);
+
+                    if (successfulSend)
+                    {
+                        Console.WriteLine($"You have successufully added Bitcoins to your wallet ");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"You have been discovered, your criminality level has increased to {player.CriminalityLevel}." +
+                                          $" Let's find someone else.");
+                    }
 
                     CurrentHackedPerson = null;
 
@@ -150,6 +162,19 @@ namespace BitCoinThief
                 case 7:
 
                     IsGameRunning =  player.Win();
+
+                    isWinner = IsGameRunning;
+
+                    if (!isWinner)
+                    {
+                        Console.WriteLine("You have won this game. Congratulation.");
+
+                        Console.WriteLine("Now you are officially rich.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough Bitcoins for win poor asshole.");
+                    }
 
                     break;
 

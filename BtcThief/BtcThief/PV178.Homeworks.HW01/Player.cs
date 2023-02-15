@@ -103,18 +103,21 @@ namespace BitCoinThief
             }
         }
 
-        public void Send(Person foundedplayer)
+        public bool Send(Person foundedplayer)
         {
             Random random = new Random();
 
             if (random.Next(101) < ActualHackingSucces)
             {
                 BtcWallet += foundedplayer.BtcCashamount;
+
+                return true;
             }
             else
             {
                 CriminalityLevel += 1;
-                Console.WriteLine($"You have been discovered, your criminality level has increased to {CriminalityLevel}.");
+
+                return false;
             }
         }
 
@@ -142,11 +145,8 @@ namespace BitCoinThief
         {
             if (BtcWallet >= 5)
             {
-                Console.WriteLine("You have won this game. Congratulation.");
-                Console.WriteLine("Now you are officially rich.");
                 return false;
             }
-            Console.WriteLine("Not enough Bitcoins for win poor asshole.");
             return true;
         }
 

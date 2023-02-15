@@ -5,8 +5,6 @@
     /// </summary>
     public interface IGame
     {
-        bool IsPlayersBtcWalletEmpty { get; }
-        bool IsCriminalityLevelReached { get; }
         bool IsSurrendered { get;}
         bool IsGameRunning { get; }
         Person CurrentHackedPerson { get; }

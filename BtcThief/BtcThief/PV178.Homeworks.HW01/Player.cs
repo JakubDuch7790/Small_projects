@@ -53,10 +53,6 @@ namespace BitCoinThief
 
         public void Hack(Person foundedPerson)
         {
-            //bool DoesFoundedPersonHaveAWallet;
-
-            Console.WriteLine($"Current Hacked Person is {foundedPerson.Name}.");
-
             Random random = new Random();
 
             ActualHackingSucces += random.Next(HackingSkill);
@@ -67,7 +63,6 @@ namespace BitCoinThief
             {
                 ActualHackingSucces = 100;
             }
-
 
             if (ActualHackingSucces < 0)
             {
@@ -104,8 +99,15 @@ namespace BitCoinThief
 
         public void Bribe()
         {
-            BtcWallet -= 0.05;
-            CriminalityLevel -= 1;
+            if (CriminalityLevel > 0)
+            {
+                BtcWallet -= 0.05;
+                CriminalityLevel -= 1;
+            }
+            else
+            {
+                return;
+            }
         }
 
         public void Learn()

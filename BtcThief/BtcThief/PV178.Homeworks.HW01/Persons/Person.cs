@@ -37,6 +37,5 @@ namespace BitCoinThief
             DefenceSequencePointer = 0;
         }
         protected abstract double CurrentPersonBtcCashAmountGenerator();
-
     }
 }

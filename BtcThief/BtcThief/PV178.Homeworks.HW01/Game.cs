@@ -11,15 +11,13 @@ namespace BitCoinThief
 {
     public class Game : IGame
     {
-        public bool IsPlayersBtcWalletEmpty => throw new NotImplementedException();
-
-        public bool IsCriminalityLevelReached => throw new NotImplementedException();
-
         public bool IsSurrendered { get; private set; }
 
         public bool IsGameRunning { get; private set; }
 
         public Person CurrentHackedPerson { get; private set; }
+
+        public bool DoesCurrentHackedPersonHaveWallet { get; private set; }
 
         public string AskForName()
         {
@@ -42,14 +40,14 @@ namespace BitCoinThief
 
         public void EndGame()
         {
-            Console.WriteLine("EndGame");
+            Console.WriteLine("EndGame!");
 
             IsGameRunning = !IsGameRunning;
         }
 
         public void CheckForEndGame(Player player)
         {
-            if (player.CriminalityLevel >= 5 || player.BtcWallet <= 0 || player.IsSurrendering)
+            if (player.CriminalityLevel >= 5 || player.BtcWallet < - 0.001 || player.IsSurrendering)
             {
                 Console.WriteLine("EndGame Hoe, and you lose.");
 
@@ -105,6 +103,8 @@ namespace BitCoinThief
 
                     CurrentHackedPerson = player.Find();
 
+                    DoesCurrentHackedPersonHaveWallet = CurrentHackedPerson.DoesHaveAWallet;
+
                     Console.WriteLine($"You have found some guy named {CurrentHackedPerson.Name} and his IP adress is {CurrentHackedPerson.IpAdress}.");
 
                     Console.WriteLine(CurrentHackedPerson.GetType());
@@ -120,6 +120,8 @@ namespace BitCoinThief
                     }
                     else
                     {
+                        Console.WriteLine($"Current Hacked Person is {CurrentHackedPerson.Name}.");
+
                         player.Hack(CurrentHackedPerson);
 
                         Console.WriteLine($"Actual Hacking Succes after this round is {player.ActualHackingSucces}.");
@@ -155,7 +157,6 @@ namespace BitCoinThief
                         }
 
                         CurrentHackedPerson = null;
-
                     }
 
                     break;
@@ -171,7 +172,6 @@ namespace BitCoinThief
                         player.Bribe();
 
                         Console.WriteLine($"Your CriminalityLevel has decreased to {player.CriminalityLevel}.");
-
                     }
 
                     break;
@@ -231,15 +231,12 @@ namespace BitCoinThief
 
         public void CheckForActualHackingSucces(Player player)
         {
-            bool DoesFoundedPersonHaveAWallet;
 
             if (player.ActualHackingSucces >= 30)
             {
-                DoesFoundedPersonHaveAWallet = CurrentHackedPerson.DoesHaveAWallet;
+                Console.WriteLine(DoesCurrentHackedPersonHaveWallet);
 
-                Console.WriteLine(DoesFoundedPersonHaveAWallet);
-
-                if (!DoesFoundedPersonHaveAWallet)
+                if (!DoesCurrentHackedPersonHaveWallet)
                 {
                     Console.WriteLine("This fool does not have a BTC wallet, let's hack another one!");
 

@@ -105,7 +105,7 @@ namespace BitCoinThief
 
                     Console.WriteLine($"You have found some guy named {CurrentHackedPerson.Name} and his IP adress is {CurrentHackedPerson.IpAdress}.");
 
-                    Console.WriteLine(CurrentHackedPerson.GetType());
+                    Console.WriteLine(CurrentHackedPerson.GetType().Name);
 
                     break;
 

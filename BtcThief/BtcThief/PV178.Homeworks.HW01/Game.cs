@@ -67,8 +67,6 @@ namespace BitCoinThief
 
                 CheckForEndGame(player);
             }
-
-            EndGame();
         }
 
         public void ChooseCommand(Player player)

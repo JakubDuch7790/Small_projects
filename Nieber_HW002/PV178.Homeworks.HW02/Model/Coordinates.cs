@@ -12,7 +12,8 @@ namespace PV178.Homeworks.HW02.Model
 
         public char ColumnIndex { get; private set; }
 
-        public static Coordinates Empty { get; private set; }
+        // Don't understand yet. Needs to be be develop yet.
+        //public static Coordinates Empty { get; private set; }
             
         public Coordinates(int rowIndex, char columnIndex)
         {

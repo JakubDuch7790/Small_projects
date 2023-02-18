@@ -22,7 +22,7 @@ namespace PV178.Homeworks.HW02.Model
         {
             if (Quantity > 0) 
             {
-                //implement later
+                Quantity--;
             }
             else
             {

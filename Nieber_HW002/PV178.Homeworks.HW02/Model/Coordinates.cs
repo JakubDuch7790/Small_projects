@@ -12,9 +12,28 @@ namespace PV178.Homeworks.HW02.Model
 
         public char ColumnIndex { get; private set; }
 
-        // Don't understand yet. Needs to be be develop yet.
-        //public static Coordinates Empty { get; private set; }
-            
+        //nechapem
+        public static Coordinates Empty { get;  }
+           
+
+        public struct Coordinatess
+        {
+            public static int RowIndex
+            {
+                get
+                {
+                    return 0;
+                }
+            }
+            public static char ColumnIndex
+            {
+                get
+                {
+                    return '0';
+                }
+            }
+        }
+
         public Coordinates(int rowIndex, char columnIndex)
         {
             RowIndex = rowIndex;

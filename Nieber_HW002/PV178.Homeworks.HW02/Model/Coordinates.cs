@@ -6,34 +6,14 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Model
 {
-    internal class Coordinates
+    public class Coordinates
     {
         public int RowIndex { get; private set; }
 
         public char ColumnIndex { get; private set; }
 
-        //nechapem
-        public static Coordinates Empty { get;  }
+        public static readonly Coordinates Empty = new Coordinates(0, '\0');
            
-
-        public struct Coordinatess
-        {
-            public static int RowIndex
-            {
-                get
-                {
-                    return 0;
-                }
-            }
-            public static char ColumnIndex
-            {
-                get
-                {
-                    return '0';
-                }
-            }
-        }
-
         public Coordinates(int rowIndex, char columnIndex)
         {
             RowIndex = rowIndex;
@@ -42,7 +22,7 @@ namespace PV178.Homeworks.HW02.Model
 
         public override string ToString()
         {
-            return $"{RowIndex};{ColumnIndex}";
+            return $"[{RowIndex};{ColumnIndex}]";
         }
     }
 }

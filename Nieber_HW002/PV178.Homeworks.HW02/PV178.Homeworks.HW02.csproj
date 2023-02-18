@@ -45,10 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\StockUnavailableException.cs" />
+    <Compile Include="Machine\ControlUnit\ControlUnit.cs" />
     <Compile Include="Machine\ControlUnit\IControlUnit.cs" />
     <Compile Include="Machine\IVendingMachine.cs" />
     <Compile Include="Machine\States\IState.cs" />
+    <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\ModelInitializer.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Stock.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

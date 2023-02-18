@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Model
 {
-    internal class Stock
+    public class Stock
     {
         public Product Product { get; set; }
         public int Quantity { get; set; }

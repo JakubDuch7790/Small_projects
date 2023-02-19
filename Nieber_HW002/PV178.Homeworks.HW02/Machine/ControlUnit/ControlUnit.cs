@@ -10,15 +10,31 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 {
     public class ControlUnit : IControlUnit
     {
-        private IDictionary<Coordinates, Stock> _coordinatesAndGoods = new Dictionary<Coordinates, Stock>();
+        private readonly IDictionary<Coordinates, Stock> _coordinatesAndGoods = new Dictionary<Coordinates, Stock>();
+
+        private int[] RowIdentifiers { get; set; }
+
+        private char[] ColumnIdentifiers { get; set; }
 
         public IState State => throw new NotImplementedException();
 
         public Stock GetStockFromCoordinates(Coordinates coordinates)
         {
-            var stockDict = GetStocksDictionary();
+            try
+            {
+                var stockDict = GetStocksDictionary();
 
-            return stockDict[coordinates];
+                if (stockDict.ContainsKey(coordinates))
+                {
+                    return stockDict[coordinates];
+                }
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Inserted coordinates are invalid. ");
+            }
+
+            return null;
         }
 
         public IDictionary<Coordinates, Stock> GetStocksDictionary()
@@ -28,7 +44,17 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         public void SetStockOnCoordinates(Coordinates coordinates, Stock stock)
         {
-            GetStocksDictionary().Add(coordinates, stock);
+            try
+            {
+                if (RowIdentifiers.Contains(coordinates.RowIndex) && ColumnIdentifiers.Contains(coordinates.ColumnIndex))
+                {
+                    GetStocksDictionary().Add(coordinates, stock);
+                }
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Inserted coordinates does not exist. ");
+            }
         }
 
         public void SwitchToState(IState state)
@@ -38,8 +64,9 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         public ControlUnit(int[] rowIdentifiers, char[] columnIdentifiers)
         {
-            
+            RowIdentifiers = rowIdentifiers;
 
+            ColumnIdentifiers = columnIdentifiers;
         }
     }
 }

@@ -62,6 +62,12 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
             State = state;
         }
 
+        //public bool CheckCoordinatesValidity(Coordinates coordinates)
+        //{
+        //    return GetStocksDictionary().ContainsKey(coordinates);
+
+        //}
+
         public ControlUnit(int[] rowIdentifiers, char[] columnIdentifiers)
         {
             RowIdentifiers = rowIdentifiers;

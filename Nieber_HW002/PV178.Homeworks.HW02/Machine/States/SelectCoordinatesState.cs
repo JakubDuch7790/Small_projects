@@ -10,8 +10,6 @@ namespace PV178.Homeworks.HW02.Machine.States
 {
     public class SelectCoordinatesState : State
     {
-        public Coordinates SelectedCoordinates { get; private set; }
-
         public SelectCoordinatesState(IControlUnit controlUnit)
         {
             ControlUnit = controlUnit;
@@ -34,6 +32,24 @@ namespace PV178.Homeworks.HW02.Machine.States
         public override void SelectProduct(Coordinates coordinates)
         {
             CheckCredit();
+
+            if (Credit > 0)
+            {
+                if (AreCoordinatesValid(coordinates) && ControlUnit.GetStocksDictionary()[coordinates] != null)
+                {
+                    Console.WriteLine($"Row: {coordinates.RowIndex} and column: {coordinates.ColumnIndex} are now selected.");
+
+                    SelectedCoordinates = coordinates;
+                }
+                else if (AreCoordinatesValid(coordinates) && ControlUnit.GetStocksDictionary()[coordinates] == null)
+                {
+                    Console.WriteLine($"There is no stock available at {coordinates}");
+                }
+                else
+                {
+                    throw new ArgumentException(String.Format($"{coordinates} are not valid coordinates."));
+                }
+            }
         }
 
         public override void TryDeliverProduct()

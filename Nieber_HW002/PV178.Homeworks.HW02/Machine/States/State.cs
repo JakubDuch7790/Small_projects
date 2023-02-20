@@ -29,5 +29,10 @@ namespace PV178.Homeworks.HW02.Machine.States
                 Console.WriteLine("Insert coins first!");
             }
         }
+
+        protected bool AreCoordinatesValid(Coordinates coordinates)
+        {
+            return ControlUnit.GetStocksDictionary().ContainsKey(coordinates);
+        }
     }
 }

@@ -39,15 +39,15 @@ namespace PV178.Homeworks.HW02.Machine.States
                 Console.WriteLine("No coordinates were given.");
             }
 
-            if (Credit < ControlUnit.GetStockFromCoordinates(SelectedCoordinates).Product.Price)
+            if (Credit < GetProduct(SelectedCoordinates).Price)
             {
                 Console.WriteLine("Not enough credit.");
             }
 
             try
             {
-                Console.WriteLine($"Delivered {ControlUnit.GetStockFromCoordinates(SelectedCoordinates).Product}," +
-                    $" returned {Credit - ControlUnit.GetStockFromCoordinates(SelectedCoordinates).Product.Price},-CZK.");
+                Console.WriteLine($"Delivered {GetProduct(SelectedCoordinates)}," +
+                    $" returned {Credit - GetProduct(SelectedCoordinates).Price},-CZK.");
 
                 ControlUnit.GetStockFromCoordinates(SelectedCoordinates).DispatchStock();
 

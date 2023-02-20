@@ -48,7 +48,10 @@
     <Compile Include="Machine\ControlUnit\ControlUnit.cs" />
     <Compile Include="Machine\ControlUnit\IControlUnit.cs" />
     <Compile Include="Machine\IVendingMachine.cs" />
+    <Compile Include="Machine\States\ConfirmOrderState.cs" />
+    <Compile Include="Machine\States\InsertCoinState.cs" />
     <Compile Include="Machine\States\IState.cs" />
+    <Compile Include="Machine\States\SelectCoordinatesState.cs" />
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\ModelInitializer.cs" />
     <Compile Include="Model\Product.cs" />

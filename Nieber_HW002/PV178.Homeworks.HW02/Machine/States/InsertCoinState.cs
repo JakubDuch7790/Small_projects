@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Machine.States
 {
-    public class InsertCoinState : IState
+    public class InsertCoinState : State
     {
-        public IControlUnit ControlUnit { get; private set; }
-
-        public decimal Credit { get; private set; }
-
-        public Coordinates SelectedCoordinates { get; private set; }
-
         private IState ActualState { get; set; }
 
         public InsertCoinState(IControlUnit controlUnit)
@@ -32,7 +26,7 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         }
 
-        public void RaiseCredit(decimal value)
+        public override void RaiseCredit(decimal value)
         {
             try
             {
@@ -42,15 +36,21 @@ namespace PV178.Homeworks.HW02.Machine.States
             {
                 Console.WriteLine("We do not serve on debt! ");
             }
+
+            Console.WriteLine($"Credit: {Credit},- CZK");
         }
 
-        public void SelectProduct(Coordinates coordinates)
+        public override void SelectProduct(Coordinates coordinates)
         {
+            CheckCredit();
+
             Console.WriteLine("Unable to call this method in this state!");
         }
 
-        public void TryDeliverProduct()
+        public override void TryDeliverProduct()
         {
+            CheckCredit();
+
             Console.WriteLine("Unable to call this method in this state!");
         }
     }

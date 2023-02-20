@@ -16,7 +16,7 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         private char[] ColumnIdentifiers { get; set; }
 
-        public IState State => throw new NotImplementedException();
+        public IState State { get; private set; }
 
         public Stock GetStockFromCoordinates(Coordinates coordinates)
         {
@@ -59,7 +59,7 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         public void SwitchToState(IState state)
         {
-            throw new NotImplementedException();
+            State = state;
         }
 
         public ControlUnit(int[] rowIdentifiers, char[] columnIdentifiers)

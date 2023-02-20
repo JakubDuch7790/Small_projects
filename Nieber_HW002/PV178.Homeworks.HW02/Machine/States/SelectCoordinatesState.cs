@@ -8,25 +8,35 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Machine.States
 {
-    public class SelectCoordinatesState : IState
+    public class SelectCoordinatesState : State
     {
-        public IControlUnit ControlUnit { get; private set; }
-
-        public decimal Credit { get; private set; }
-
         public Coordinates SelectedCoordinates { get; private set; }
 
-        public void RaiseCredit(decimal value)
+        public SelectCoordinatesState(IControlUnit controlUnit)
+        {
+            ControlUnit = controlUnit;
+        }
+
+        public SelectCoordinatesState(IState state, IControlUnit controlUnit)
+        {
+            ControlUnit = controlUnit;
+
+            Credit = state.Credit;
+
+            SelectedCoordinates = state.SelectedCoordinates;
+        }
+
+        public override void RaiseCredit(decimal value)
         {
             throw new NotImplementedException();
         }
 
-        public void SelectProduct(Coordinates coordinates)
+        public override void SelectProduct(Coordinates coordinates)
         {
-            throw new NotImplementedException();
+            CheckCredit();
         }
 
-        public void TryDeliverProduct()
+        public override void TryDeliverProduct()
         {
             throw new NotImplementedException();
         }

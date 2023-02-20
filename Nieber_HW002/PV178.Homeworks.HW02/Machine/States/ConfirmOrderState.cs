@@ -8,25 +8,19 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Machine.States
 {
-    public class ConfirmOrderState : IState
+    public class ConfirmOrderState : State
     {
-        public IControlUnit ControlUnit => throw new NotImplementedException();
-
-        public decimal Credit => throw new NotImplementedException();
-
-        public Coordinates SelectedCoordinates => throw new NotImplementedException();
-
-        public void RaiseCredit(decimal value)
+        public override void RaiseCredit(decimal value)
         {
             throw new NotImplementedException();
         }
 
-        public void SelectProduct(Coordinates coordinates)
+        public override void SelectProduct(Coordinates coordinates)
         {
             throw new NotImplementedException();
         }
 
-        public void TryDeliverProduct()
+        public override void TryDeliverProduct()
         {
             throw new NotImplementedException();
         }

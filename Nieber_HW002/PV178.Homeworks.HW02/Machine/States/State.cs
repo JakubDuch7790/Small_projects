@@ -34,5 +34,10 @@ namespace PV178.Homeworks.HW02.Machine.States
         {
             return ControlUnit.GetStocksDictionary().ContainsKey(coordinates);
         }
+
+        protected Product GetProduct(Coordinates coordinates)
+        {
+            return ControlUnit.GetStockFromCoordinates(coordinates).Product;
+        }
     }
 }

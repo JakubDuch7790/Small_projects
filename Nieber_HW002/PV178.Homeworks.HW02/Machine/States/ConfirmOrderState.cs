@@ -1,4 +1,5 @@
-﻿using PV178.Homeworks.HW02.Machine.ControlUnit;
+﻿using PV178.Homeworks.HW02.Exceptions;
+using PV178.Homeworks.HW02.Machine.ControlUnit;
 using PV178.Homeworks.HW02.Model;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,23 @@ namespace PV178.Homeworks.HW02.Machine.States
                 Console.WriteLine("Not enough credit.");
             }
 
+            try
+            {
+                Console.WriteLine($"Delivered {ControlUnit.GetStockFromCoordinates(SelectedCoordinates).Product}," +
+                    $" returned {Credit - ControlUnit.GetStockFromCoordinates(SelectedCoordinates).Product.Price},-CZK.");
+
+                ControlUnit.GetStockFromCoordinates(SelectedCoordinates).DispatchStock();
+
+                ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
+            }
+            catch (StockUnavailableException ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                SelectedCoordinates = Coordinates.Empty;
+
+                ControlUnit.SwitchToState(new SelectCoordinatesState(ControlUnit.State, ControlUnit));
+            }
         }
     }
 }

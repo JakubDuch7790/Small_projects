@@ -38,6 +38,8 @@ namespace PV178.Homeworks.HW02.Machine.States
             }
 
             Console.WriteLine($"Credit: {Credit},- CZK");
+
+            ControlUnit.SwitchToState(new SelectCoordinatesState(ControlUnit.State, ControlUnit));
         }
 
         public override void SelectProduct(Coordinates coordinates)

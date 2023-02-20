@@ -13,7 +13,16 @@ namespace PV178.Homeworks.HW02.Machine.States
     {
         public override void RaiseCredit(decimal value)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Credit += value;
+            }
+            catch (ArgumentException) when (value < 0)
+            {
+                Console.WriteLine("We do not serve on debt! ");
+            }
+
+            Console.WriteLine($"Credit: {Credit},- CZK");
         }
 
         public override void SelectProduct(Coordinates coordinates)

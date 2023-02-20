@@ -10,13 +10,12 @@ namespace PV178.Homeworks.HW02.Machine.States
 {
     public class InsertCoinState : State
     {
-        private IState ActualState { get; set; }
 
         public InsertCoinState(IControlUnit controlUnit)
         {
-            ActualState = new InsertCoinState(controlUnit);
-
             ControlUnit = controlUnit;
+
+            ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
 
             Credit = 0;
         }

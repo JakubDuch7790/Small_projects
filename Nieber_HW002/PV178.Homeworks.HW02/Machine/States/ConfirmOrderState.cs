@@ -20,9 +20,29 @@ namespace PV178.Homeworks.HW02.Machine.States
             throw new NotImplementedException();
         }
 
+        public ConfirmOrderState(IState state, IControlUnit controlUnit)
+        {
+            ControlUnit = controlUnit;
+
+            Credit = state.Credit;
+
+            SelectedCoordinates = state.SelectedCoordinates;
+        }
+
         public override void TryDeliverProduct()
         {
-            throw new NotImplementedException();
+            CheckCredit();
+
+            if (SelectedCoordinates == null)
+            {
+                Console.WriteLine("No coordinates were given.");
+            }
+
+            if (Credit < ControlUnit.GetStockFromCoordinates(SelectedCoordinates).Product.Price)
+            {
+                Console.WriteLine("Not enough credit.");
+            }
+
         }
     }
 }

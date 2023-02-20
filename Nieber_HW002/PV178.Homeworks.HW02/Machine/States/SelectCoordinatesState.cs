@@ -40,6 +40,8 @@ namespace PV178.Homeworks.HW02.Machine.States
                     Console.WriteLine($"Row: {coordinates.RowIndex} and column: {coordinates.ColumnIndex} are now selected.");
 
                     SelectedCoordinates = coordinates;
+
+                    ControlUnit.SwitchToState(new ConfirmOrderState(ControlUnit.State, ControlUnit));
                 }
                 else if (AreCoordinatesValid(coordinates) && ControlUnit.GetStocksDictionary()[coordinates] == null)
                 {

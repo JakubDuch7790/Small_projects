@@ -41,7 +41,5 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
         /// <param name="coordinates">Stock coordinates</param>
         /// <param name="stock">Stock to set</param>
         void SetStockOnCoordinates(Coordinates coordinates, Stock stock);
-
-        //bool CheckCoordinatesValidity(Coordinates coordinates);
     }
 }

@@ -34,27 +34,30 @@ namespace PV178.Homeworks.HW02.Machine.States
                 Console.WriteLine("No coordinates were given.");
             }
 
-            if (Credit < GetProduct(SelectedCoordinates).Price)
+            else if (Credit < GetProduct(SelectedCoordinates).Price)
             {
                 Console.WriteLine("Not enough credit.");
             }
 
-            try
+            else
             {
-                Console.WriteLine($"Delivered {GetProduct(SelectedCoordinates)}," +
-                    $" returned {Credit - GetProduct(SelectedCoordinates).Price},-CZK.");
+                try
+                {
+                    Console.WriteLine($"Delivered {GetProduct(SelectedCoordinates)}," +
+                        $" returned {Credit - GetProduct(SelectedCoordinates).Price},-CZK.");
 
-                ControlUnit.GetStockFromCoordinates(SelectedCoordinates).DispatchStock();
+                    ControlUnit.GetStockFromCoordinates(SelectedCoordinates).DispatchStock();
 
-                ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
-            }
-            catch (StockUnavailableException ex)
-            {
-                Console.WriteLine(ex.Message);
+                    ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
+                }
+                catch (StockUnavailableException ex)
+                {
+                    Console.WriteLine(ex.Message);
 
-                SelectedCoordinates = Coordinates.Empty;
+                    SelectedCoordinates = Coordinates.Empty;
 
-                ControlUnit.SwitchToState(new SelectCoordinatesState(ControlUnit.State, ControlUnit));
+                    ControlUnit.SwitchToState(new SelectCoordinatesState(ControlUnit.State, ControlUnit));
+                }
             }
         }
     }

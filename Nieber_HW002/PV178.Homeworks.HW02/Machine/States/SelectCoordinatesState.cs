@@ -27,9 +27,8 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         public override void SelectProduct(Coordinates coordinates)
         {
-            CheckCredit();
 
-            if (Credit > 0)
+            if (CheckCredit())
             {
                 if (AreCoordinatesValid(coordinates) && ControlUnit.GetStocksDictionary()[coordinates] != null)
                 {

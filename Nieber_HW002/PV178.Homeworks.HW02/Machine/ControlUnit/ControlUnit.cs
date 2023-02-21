@@ -16,6 +16,13 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         public IState State { get; private set; }
 
+        public ControlUnit(int[] rowIdentifiers, char[] columnIdentifiers)
+        {
+            RowIdentifiers = rowIdentifiers;
+
+            ColumnIdentifiers = columnIdentifiers;
+        }
+
         public Stock GetStockFromCoordinates(Coordinates coordinates)
         {
             try
@@ -58,13 +65,6 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
         public void SwitchToState(IState state)
         {
             State = state;
-        }
-
-        public ControlUnit(int[] rowIdentifiers, char[] columnIdentifiers)
-        {
-            RowIdentifiers = rowIdentifiers;
-
-            ColumnIdentifiers = columnIdentifiers;
         }
     }
 }

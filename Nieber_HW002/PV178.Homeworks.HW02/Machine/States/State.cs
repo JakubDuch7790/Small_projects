@@ -30,12 +30,9 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         public abstract void TryDeliverProduct();
 
-        protected void CheckCredit()
+        protected bool CheckCredit()
         {
-            if (Credit <= 0)
-            {
-                Console.WriteLine("Insert coins first!");
-            }
+            return Credit > 0;
         }
 
         protected bool AreCoordinatesValid(Coordinates coordinates)

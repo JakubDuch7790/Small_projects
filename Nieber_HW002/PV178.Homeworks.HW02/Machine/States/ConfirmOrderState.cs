@@ -19,9 +19,7 @@ namespace PV178.Homeworks.HW02.Machine.States
         public ConfirmOrderState(IState state, IControlUnit controlUnit)
         {
             ControlUnit = controlUnit;
-
             Credit = state.Credit;
-
             SelectedCoordinates = state.SelectedCoordinates;
         }
 

@@ -1,10 +1,6 @@
 ﻿using PV178.Homeworks.HW02.Machine.ControlUnit;
 using PV178.Homeworks.HW02.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Machine.States
 {
@@ -16,7 +12,19 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         public Coordinates SelectedCoordinates { get; protected set; }
 
-        public abstract void RaiseCredit(decimal value);
+        public virtual void RaiseCredit(decimal value)
+        {
+            try
+            {
+                Credit += value;
+            }
+            catch (ArgumentException) when (value < 0)
+            {
+                Console.WriteLine("We do not serve on debt! ");
+            }
+
+            Console.WriteLine($"Credit: {Credit},- CZK");
+        }
 
         public abstract void SelectProduct(Coordinates coordinates);
 

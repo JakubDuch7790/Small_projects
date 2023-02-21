@@ -11,23 +11,9 @@ namespace PV178.Homeworks.HW02.Machine.States
 {
     public class ConfirmOrderState : State
     {
-        public override void RaiseCredit(decimal value)
-        {
-            try
-            {
-                Credit += value;
-            }
-            catch (ArgumentException) when (value < 0)
-            {
-                Console.WriteLine("We do not serve on debt! ");
-            }
-
-            Console.WriteLine($"Credit: {Credit},- CZK");
-        }
-
         public override void SelectProduct(Coordinates coordinates)
         {
-            throw new NotImplementedException();
+
         }
 
         public ConfirmOrderState(IState state, IControlUnit controlUnit)

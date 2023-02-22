@@ -21,7 +21,7 @@ namespace PV178.Homeworks.HW02.Model
 
         public override string ToString()
         {
-            return $"{Name} for {Price} CZK";
+            return $"{Name} for {Price},- CZK";
         }
     }
 }

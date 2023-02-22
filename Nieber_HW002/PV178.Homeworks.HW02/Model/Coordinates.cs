@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Model
 {
-    public class Coordinates
+    public struct Coordinates
     {
         public int RowIndex { get; private set; }
 

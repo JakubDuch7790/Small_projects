@@ -32,7 +32,7 @@ namespace PV178.Homeworks.HW02.Model
 
         public override string ToString()
         {
-            return $"{Product} (available: {Quantity})";
+            return $"{Product} (available: {Quantity}x)";
         }
     }
 }

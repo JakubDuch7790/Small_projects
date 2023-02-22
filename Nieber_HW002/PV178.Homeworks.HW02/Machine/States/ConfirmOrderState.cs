@@ -27,7 +27,7 @@ namespace PV178.Homeworks.HW02.Machine.States
         {
             CheckCredit();
 
-            if (SelectedCoordinates == null)
+            if (!ControlUnit.GetStocksDictionary().ContainsKey(SelectedCoordinates))
             {
                 Console.WriteLine("No coordinates were given.");
             }

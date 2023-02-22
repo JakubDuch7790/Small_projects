@@ -10,7 +10,6 @@ namespace PV178.Homeworks.HW02.Machine.States
         public InsertCoinState(IControlUnit controlUnit)
         {
             ControlUnit = controlUnit;
-            //ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
             Credit = 0;
         }
 

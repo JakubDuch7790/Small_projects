@@ -21,6 +21,9 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
             RowIdentifiers = rowIdentifiers;
 
             ColumnIdentifiers = columnIdentifiers;
+
+            SwitchToState(new InsertCoinState(this));
+
         }
 
         public Stock GetStockFromCoordinates(Coordinates coordinates)

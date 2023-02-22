@@ -3,6 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PV178.Homeworks.HW02.Machine.ControlUnit;
 using PV178.Homeworks.HW02.Machine.States;
 using PV178.Homeworks.HW02.Model;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace PV178.Homeworks.HW02.Tests.Tests
 {

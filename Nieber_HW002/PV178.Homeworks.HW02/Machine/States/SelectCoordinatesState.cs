@@ -14,15 +14,13 @@ namespace PV178.Homeworks.HW02.Machine.States
         public SelectCoordinatesState(IState state, IControlUnit controlUnit)
         {
             ControlUnit = controlUnit;
-
             Credit = state.Credit;
-
             SelectedCoordinates = state.SelectedCoordinates;
         }
 
         public override void RaiseCredit(decimal value)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException(message: "Unable to call this method in this state!");
         }
 
         public override void SelectProduct(Coordinates coordinates)
@@ -51,7 +49,7 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         public override void TryDeliverProduct()
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException(message: "Unable to call this method in this state!");
         }
     }
 }

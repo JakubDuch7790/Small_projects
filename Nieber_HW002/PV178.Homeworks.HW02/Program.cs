@@ -46,7 +46,7 @@ namespace PV178.Homeworks.HW02
 
         static void Main(string[] args)
         {
-            vendingMachine = new Machine.VendingMachine(new ControlUnit(
+            vendingMachine = new VendingMachine(new ControlUnit(
                                                         new[] { 0, 1, 2, 3, 4, 5, 6, 7 },
                                                         new[] { 'A', 'B', 'C', 'D', 'E', 'F' }));
 

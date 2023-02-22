@@ -53,6 +53,7 @@
     <Compile Include="Machine\States\IState.cs" />
     <Compile Include="Machine\States\SelectCoordinatesState.cs" />
     <Compile Include="Machine\States\State.cs" />
+    <Compile Include="Machine\VendingMachine.cs" />
     <Compile Include="Model\Coordinates.cs" />
     <Compile Include="Model\ModelInitializer.cs" />
     <Compile Include="Model\Product.cs" />

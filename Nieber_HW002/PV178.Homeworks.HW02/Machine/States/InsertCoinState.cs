@@ -10,9 +10,7 @@ namespace PV178.Homeworks.HW02.Machine.States
         public InsertCoinState(IControlUnit controlUnit)
         {
             ControlUnit = controlUnit;
-
             ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
-
             Credit = 0;
         }
 
@@ -41,14 +39,14 @@ namespace PV178.Homeworks.HW02.Machine.States
         {
             CheckCredit();
 
-            Console.WriteLine("Unable to call this method in this state!");
+            throw new InvalidOperationException(message: "Unable to call this method in this state!");
         }
 
         public override void TryDeliverProduct()
         {
             CheckCredit();
 
-            Console.WriteLine("Unable to call this method in this state!");
+            throw new InvalidOperationException(message: "Unable to call this method in this state!");
         }
     }
 }

@@ -9,6 +9,7 @@ namespace PV178.Homeworks.HW02.Exceptions
     {
         public StockUnavailableException()
         {
+
         }
 
         public StockUnavailableException(string message) : base(message)

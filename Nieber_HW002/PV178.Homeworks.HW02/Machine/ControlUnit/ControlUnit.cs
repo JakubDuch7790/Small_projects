@@ -44,7 +44,7 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    return null;
                 }
 
             }

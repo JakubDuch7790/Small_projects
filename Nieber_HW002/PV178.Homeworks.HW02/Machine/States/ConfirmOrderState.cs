@@ -11,11 +11,6 @@ namespace PV178.Homeworks.HW02.Machine.States
 {
     public class ConfirmOrderState : State
     {
-        public override void SelectProduct(Coordinates coordinates)
-        {
-
-        }
-
         public ConfirmOrderState(IState state, IControlUnit controlUnit)
         {
             ControlUnit = controlUnit;

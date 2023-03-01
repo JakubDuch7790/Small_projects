@@ -15,7 +15,8 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         public InsertCoinState(IControlUnit controlUnit, IState state)
         {
-
+            ControlUnit = controlUnit;
+            Credit = state.Credit;
         }
 
         public override void RaiseCredit(decimal value)

@@ -33,7 +33,14 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
                 if (stockDict.ContainsKey(coordinates))
                 {
-                    return stockDict[coordinates];
+                    if (stockDict[coordinates].Quantity == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return stockDict[coordinates];
+                    }
                 }
                 else
                 {

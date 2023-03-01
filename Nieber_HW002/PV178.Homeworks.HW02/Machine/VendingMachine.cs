@@ -26,7 +26,7 @@ namespace PV178.Homeworks.HW02.Machine
 
             foreach (var keyValuePair in ControlUnit.GetStocksDictionary())
             {
-                string dictElement = $"{keyValuePair.Key} {keyValuePair.Value}, ";
+                string dictElement = $"{keyValuePair.Key} {keyValuePair.Value}";
 
                 offer.Add(dictElement);
             }

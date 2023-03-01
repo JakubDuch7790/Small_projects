@@ -22,30 +22,32 @@ namespace PV178.Homeworks.HW02.Machine.States
         {
             try
             {
-                Credit += value;
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Invalid inserted value.");
+                }
+                else
+                {
+                    Credit += value;
+                }
             }
-            catch (ArgumentException) when (value <= 0)
+            catch (ArgumentException)
             {
-                Console.WriteLine("We do not serve on debt! ");
+                throw new ArgumentException();
             }
 
             Console.WriteLine($"Credit: {Credit},- CZK");
 
             ControlUnit.SwitchToState(new SelectCoordinatesState(ControlUnit.State, ControlUnit));
         }
-
         public override void SelectProduct(Coordinates coordinates)
         {
-            CheckCredit();
-
-            throw new InvalidOperationException(message: "Unable to call this method in this state!");
+            Console.WriteLine("Insert coin first.");
         }
 
         public override void TryDeliverProduct()
         {
-            CheckCredit();
-
-            throw new InvalidOperationException(message: "Unable to call this method in this state!");
+            Console.WriteLine("Insert coin first.");
         }
     }
 }

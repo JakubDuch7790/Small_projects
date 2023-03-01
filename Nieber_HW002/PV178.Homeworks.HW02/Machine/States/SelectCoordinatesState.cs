@@ -1,6 +1,7 @@
 ﻿using PV178.Homeworks.HW02.Machine.ControlUnit;
 using PV178.Homeworks.HW02.Model;
 using System;
+using System.Collections.Generic;
 
 namespace PV178.Homeworks.HW02.Machine.States
 {
@@ -26,8 +27,12 @@ namespace PV178.Homeworks.HW02.Machine.States
         public override void SelectProduct(Coordinates coordinates)
         {
 
-            if (CheckCredit())
+            if (!CheckCredit())
             {
+                throw new InvalidOperationException("Insert coin first.");
+            }
+            else
+            { 
                 if (AreCoordinatesValid(coordinates) && ControlUnit.GetStocksDictionary()[coordinates] != null)
                 {
                     Console.WriteLine($"Row: {coordinates.RowIndex} and column: {coordinates.ColumnIndex} are now selected.");
@@ -42,14 +47,14 @@ namespace PV178.Homeworks.HW02.Machine.States
                 }
                 else
                 {
-                    throw new ArgumentException(String.Format($"{coordinates} are not valid coordinates."));
+                    throw new ArgumentException(String.Format($"Insert coin first."));
                 }
             }
         }
 
         public override void TryDeliverProduct()
         {
-            throw new InvalidOperationException(message: "Unable to call this method in this state!");
+
         }
     }
 }

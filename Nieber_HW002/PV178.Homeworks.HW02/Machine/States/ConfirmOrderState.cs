@@ -41,10 +41,10 @@ namespace PV178.Homeworks.HW02.Machine.States
             {
                 try
                 {
-                    Console.WriteLine($"Delivered {GetProduct(SelectedCoordinates)}," +
-                        $" returned {Credit - GetProduct(SelectedCoordinates).Price},-CZK.");
-
                     ControlUnit.GetStockFromCoordinates(SelectedCoordinates).DispatchStock();
+
+                    Console.WriteLine($"Delivered {GetProduct(SelectedCoordinates)}," +
+                        $" returned {Credit - GetProduct(SelectedCoordinates).Price},- CZK.");
 
                     ControlUnit.SwitchToState(new InsertCoinState(ControlUnit));
                 }

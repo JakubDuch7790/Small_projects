@@ -54,7 +54,7 @@ namespace PV178.Homeworks.HW02.Machine.States
 
         public override void TryDeliverProduct()
         {
-
+            Console.WriteLine("No coordinates were given.");
         }
     }
 }

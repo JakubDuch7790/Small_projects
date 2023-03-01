@@ -35,13 +35,16 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
                 {
                     return stockDict[coordinates];
                 }
+                else
+                {
+                    throw new ArgumentException();
+                }
+
             }
             catch (ArgumentException)
             {
-                Console.WriteLine("Inserted coordinates are invalid. ");
+                throw new ArgumentException();
             }
-
-            return null;
         }
 
         public IDictionary<Coordinates, Stock> GetStocksDictionary()
@@ -53,14 +56,21 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
         {
             try
             {
+
                 if (RowIdentifiers.Contains(coordinates.RowIndex) && ColumnIdentifiers.Contains(coordinates.ColumnIndex))
-                {
+                { 
                     GetStocksDictionary().Add(coordinates, stock);
                 }
+                else
+                {
+                    throw new ArgumentException("Invalid coordinates.");
+                }
+                    
             }
+
             catch (ArgumentException)
             {
-                Console.WriteLine("Inserted coordinates does not exist. ");
+                throw new ArgumentException();
             }
         }
 

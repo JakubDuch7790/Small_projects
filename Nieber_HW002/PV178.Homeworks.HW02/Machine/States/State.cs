@@ -18,7 +18,7 @@ namespace PV178.Homeworks.HW02.Machine.States
             {
                 Credit += value;
             }
-            catch (ArgumentException) when (value < 0)
+            catch (ArgumentException) when (value <= 0)
             {
                 Console.WriteLine("We do not serve on debt! ");
             }

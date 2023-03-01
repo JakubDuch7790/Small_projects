@@ -18,10 +18,10 @@ namespace PV178.Homeworks.HW02.Machine.States
             SelectedCoordinates = state.SelectedCoordinates;
         }
 
-        public override void RaiseCredit(decimal value)
-        {
-            throw new InvalidOperationException(message: "Unable to call this method in this state!");
-        }
+        //public override void RaiseCredit(decimal value)
+        //{
+        //    throw new InvalidOperationException(message: "Unable to call this method in this state!");
+        //}
 
         public override void SelectProduct(Coordinates coordinates)
         {

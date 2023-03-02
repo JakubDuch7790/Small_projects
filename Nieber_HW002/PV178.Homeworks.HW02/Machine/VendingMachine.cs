@@ -21,24 +21,24 @@ namespace PV178.Homeworks.HW02.Machine
             ControlUnit.State.TryDeliverProduct();
         }
 
-        public IEnumerable<string> GetCurrentOffer()
-        {
-            List<string> offer = new List<string>();
-
-            foreach (var keyValuePair in ControlUnit.GetStocksDictionary())
-            {
-                string dictElement = $"{keyValuePair.Key} {keyValuePair.Value}";
-
-                offer.Add(dictElement);
-            }
-
-            return offer;
-        }
-
         //public IEnumerable<string> GetCurrentOffer()
         //{
-        //    return ControlUnit.GetStocksDictionary().Select(kvp => kvp.ToString()).ToList();
+        //    List<string> offer = new List<string>();
+
+        //    foreach (var keyValuePair in ControlUnit.GetStocksDictionary())
+        //    {
+        //        string dictElement = $"{keyValuePair.Key} {keyValuePair.Value}";
+
+        //        offer.Add(dictElement);
+        //    }
+
+        //    return offer;
         //}
+
+        public IEnumerable<string> GetCurrentOffer()
+        {
+            return ControlUnit.GetStocksDictionary().Select(kvp => $"{kvp.Key.ToString()} {kvp.Value.ToString()}");
+        }
 
 
         public void InsertCoin(decimal value)

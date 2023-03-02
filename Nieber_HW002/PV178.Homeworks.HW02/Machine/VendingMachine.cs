@@ -2,6 +2,7 @@
 using PV178.Homeworks.HW02.Machine.States;
 using PV178.Homeworks.HW02.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace PV178.Homeworks.HW02.Machine
@@ -33,6 +34,12 @@ namespace PV178.Homeworks.HW02.Machine
 
             return offer;
         }
+
+        //public IEnumerable<string> GetCurrentOffer()
+        //{
+        //    return ControlUnit.GetStocksDictionary().Select(kvp => kvp.ToString()).ToList();
+        //}
+
 
         public void InsertCoin(decimal value)
         {

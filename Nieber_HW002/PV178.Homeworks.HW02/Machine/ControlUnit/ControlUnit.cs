@@ -27,28 +27,17 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         public Stock GetStockFromCoordinates(Coordinates coordinates)
         {
-            try
+            var stockDict = GetStocksDictionary();
+
+            if (stockDict.ContainsKey(coordinates) && stockDict[coordinates].Quantity > 0)
             {
-                var stockDict = GetStocksDictionary();
-
-                if (stockDict.ContainsKey(coordinates))
-                {
-                    if (stockDict[coordinates].Quantity == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return stockDict[coordinates];
-                    }
-                }
-                else
-                {
-                    return null;
-                }
-
+                return stockDict[coordinates];
             }
-            catch (ArgumentException)
+            else if (stockDict.ContainsKey(coordinates) && stockDict[coordinates].Quantity <= 0)
+            {
+                return null;
+            }
+            else
             {
                 throw new ArgumentException();
             }
@@ -61,23 +50,13 @@ namespace PV178.Homeworks.HW02.Machine.ControlUnit
 
         public void SetStockOnCoordinates(Coordinates coordinates, Stock stock)
         {
-            try
-            {
-
-                if (RowIdentifiers.Contains(coordinates.RowIndex) && ColumnIdentifiers.Contains(coordinates.ColumnIndex))
-                { 
-                    GetStocksDictionary().Add(coordinates, stock);
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid coordinates.");
-                }
-                    
+            if (RowIdentifiers.Contains(coordinates.RowIndex) && ColumnIdentifiers.Contains(coordinates.ColumnIndex))
+            { 
+                GetStocksDictionary().Add(coordinates, stock);
             }
-
-            catch (ArgumentException)
+            else
             {
-                throw new ArgumentException();
+                throw new ArgumentException("Invalid coordinates.");
             }
         }
 

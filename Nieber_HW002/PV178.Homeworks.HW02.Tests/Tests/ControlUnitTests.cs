@@ -95,7 +95,7 @@ namespace PV178.Homeworks.HW02.Tests.Tests
         public void GetStockFromCoordinates_ValidCoordinatesWithEmptyStock_ReturnsNull()
         {
             // arrange
-            var coords = new Coordinates(0, 'F');
+            var coords = new Coordinates(4, 'C');
 
             // act
             var stock = controlUnit.GetStockFromCoordinates(coords);

@@ -37,7 +37,7 @@ namespace PV178.Homeworks.HW02.Machine
 
         public IEnumerable<string> GetCurrentOffer()
         {
-            return ControlUnit.GetStocksDictionary().Select(kvp => $"{kvp.Key.ToString()} {kvp.Value.ToString()}");
+            return ControlUnit.GetStocksDictionary().Select(kvp => $"{kvp.Key} {kvp.Value}");
         }
 
 

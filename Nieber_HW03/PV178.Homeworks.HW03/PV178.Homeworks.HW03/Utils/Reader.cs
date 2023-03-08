@@ -10,6 +10,7 @@ namespace PV178.Homeworks.HW03.Utils
     public class Reader : IDisposable
     {
         public string Text { get; set; }
+        //public event EventHandler KeyPressed;
 
         private const int Timeout = 300;
         private readonly Displayer displayer = new Displayer();
@@ -55,14 +56,14 @@ namespace PV178.Homeworks.HW03.Utils
             Console.Clear();
         }
 
-        /// <summary>
-        /// Invokes event that says which key was pressed and what is actual reading position.
+        /// <summary>which key was pressed and what is actual reading position.
         /// </summary>
+        /// Invokes event that says 
         /// <param name="key">pressed key</param>
         /// <param name="position">actual reading position</param>
         protected virtual void OnKeyPressed(char key, int position)
         {
-            throw new NotImplementedException();
+            //KeyPressed?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>

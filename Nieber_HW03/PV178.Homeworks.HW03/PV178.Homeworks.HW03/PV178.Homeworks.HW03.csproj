@@ -44,12 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Displayer.cs" />
     <Compile Include="Utils\Reader.cs" />
     <Compile Include="Utils\Sounder.cs" />
+    <Compile Include="Utils\Tone.cs" />
+    <Compile Include="Utils\Tones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

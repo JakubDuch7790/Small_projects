@@ -52,7 +52,6 @@
     <Compile Include="Utils\Reader.cs" />
     <Compile Include="Utils\Sounder.cs" />
     <Compile Include="Utils\Tone.cs" />
-    <Compile Include="Utils\Tones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

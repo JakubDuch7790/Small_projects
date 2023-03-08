@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 
 namespace PV178.Homeworks.HW03.Utils
@@ -7,12 +9,25 @@ namespace PV178.Homeworks.HW03.Utils
     /// <summary>
     /// Class responsible for reading songs from textfiles and handling user input.
     /// </summary>
+    public class KeyNotPressedEventArgs : EventArgs
+    {
+        public int Position { get; set; }
+    }
+    public class KeyPressedEventArgs : EventArgs
+    {
+        public char Key { get; set; }
+        public int Position { get; set; }
+    }
     public class Reader : IDisposable
     {
-        public string Text { get; set; }
-        //public event EventHandler KeyPressed;
+        public delegate void KeyPressedEventHandler(object source, KeyPressedEventArgs args);
+        public delegate void KeyNotPressedEventHandler(object source, KeyNotPressedEventArgs args);
 
-        private const int Timeout = 300;
+        public event KeyPressedEventHandler KeyPressed;
+        public event KeyNotPressedEventHandler KeyNotPressed;
+
+        public string Text { get; set; }
+        private const int Timeout = 500;
         private readonly Displayer displayer = new Displayer();
 
         private AutoResetEvent trackDone;
@@ -63,7 +78,7 @@ namespace PV178.Homeworks.HW03.Utils
         /// <param name="position">actual reading position</param>
         protected virtual void OnKeyPressed(char key, int position)
         {
-            //KeyPressed?.Invoke(this, EventArgs.Empty);
+            KeyPressed?.Invoke(this, new KeyPressedEventArgs() {Key = key, Position = position});
         }
 
         /// <summary>
@@ -72,7 +87,7 @@ namespace PV178.Homeworks.HW03.Utils
         /// <param name="position">actual reading position</param>
         protected virtual void OnKeyNotPressed(int position)
         {
-            throw new NotImplementedException();
+            KeyNotPressed?.Invoke(this, new KeyNotPressedEventArgs() { Position = position });
         }
 
         /// <summary>
@@ -110,9 +125,10 @@ namespace PV178.Homeworks.HW03.Utils
             while (true)
             {
                 input = Console.ReadKey(true).KeyChar;
+
                 if (input != null && !end)
                 {
-                    Sounder.MakeSound(400);
+                    Sounder.MakeSound(300);
                 }
             }
         }

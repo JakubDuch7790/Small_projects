@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading;
 
 namespace PV178.Homeworks.HW03.Utils
@@ -20,12 +21,14 @@ namespace PV178.Homeworks.HW03.Utils
     }
     public class Reader : IDisposable
     {
-        public delegate void KeyPressedEventHandler(object source, KeyPressedEventArgs args);
-        public delegate void KeyNotPressedEventHandler(object source, KeyNotPressedEventArgs args);
+        public event EventHandler KeyPressed;
+        public event EventHandler KeyNotPressed;
 
-        public event KeyPressedEventHandler KeyPressed;
-        public event KeyNotPressedEventHandler KeyNotPressed;
+        //public void KeyPressedEventHandler(object source, KeyPressedEventArgs args);
 
+        //public  void KeyNotPressedEventHandler(object source, KeyNotPressedEventArgs args);
+
+        public int Freq { get; set; }
         public string Text { get; set; }
         private const int Timeout = 500;
         private readonly Displayer displayer = new Displayer();
@@ -35,6 +38,7 @@ namespace PV178.Homeworks.HW03.Utils
         private Thread gettingThread;
         private char? input;
         private bool end;
+        private readonly Dictionary<char, Tone> tones = new Dictionary<char, Tone>();
 
         public Reader(string songName)
         {
@@ -44,6 +48,8 @@ namespace PV178.Homeworks.HW03.Utils
                 trackDone = new AutoResetEvent(false);
                 checkingThread = new Thread(CheckInput) { IsBackground = true };
                 gettingThread = new Thread(GetInput) { IsBackground = true };
+
+                FillDictionary(tones);
             }
             else
             {
@@ -128,9 +134,24 @@ namespace PV178.Homeworks.HW03.Utils
 
                 if (input != null && !end)
                 {
-                    Sounder.MakeSound(300);
+                    var pressedKey = (char)input;
+                    if (tones.ContainsKey(pressedKey))
+                    {
+                        Sounder.MakeSound(tones[pressedKey].FrequencyOfTone);
+                    }
                 }
             }
+        }
+
+        private void FillDictionary(Dictionary<char, Tone> dictionary)
+        {
+            dictionary.Add('a', new Tone('a', "C", 261));
+            dictionary.Add('s', new Tone('s', "D", 293));
+            dictionary.Add('d', new Tone('d', "E", 330));
+            dictionary.Add('f', new Tone('f', "F", 349));
+            dictionary.Add('g', new Tone('g', "G", 392));
+            dictionary.Add('h', new Tone('h', "A", 440));
+            dictionary.Add('j', new Tone('j', "H", 494));
         }
     }
 }

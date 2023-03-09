@@ -17,8 +17,6 @@ namespace PV178.Homeworks.HW03
 
             chosenSong = Console.ReadLine().ToLower();
 
-            Console.WriteLine("The game starts now!");
-
             Reader reader = new Reader(chosenSong);
 
             reader.ReadKeys();

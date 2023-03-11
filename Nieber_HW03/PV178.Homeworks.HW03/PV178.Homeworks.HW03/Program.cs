@@ -9,20 +9,7 @@ namespace PV178.Homeworks.HW03
         {
             Game game = new Game();
 
-            Sounder.MakeCoolSound();
-            Sounder.MakeCoolSound();
-
-            Sounder.MakeCoolSound();
-
-            Sounder.MakeCoolSound();
-            Sounder.MakeCoolSound();
-            Sounder.MakeCoolSound();
-            Sounder.MakeCoolSound();
-            Sounder.MakeCoolSound();
-            Sounder.MakeCoolSound();
-
-
-            //game.Start();
+            game.Start();
         }
     }
 }

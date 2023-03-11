@@ -1,6 +1,7 @@
 ﻿using PV178.Homeworks.HW03.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,8 @@ namespace PV178.Homeworks.HW03
 {
     public class Game : IGame
     {
+        public int Points { get; private set; }
+
         public void Start()
         {
             string chosenSong;
@@ -19,7 +22,34 @@ namespace PV178.Homeworks.HW03
 
             Reader reader = new Reader(chosenSong);
 
+            Points = reader.Text.Length;
+
+            reader.KeyPressed += reader.CheckAnswer;
+
             reader.ReadKeys();
+
+        }
+
+
+        public void ChoseSong()
+        {
+            List<string> songNames = new List<string>();
+
+            string root = Path.GetFullPath("Songs");
+
+            var files = from file in Directory.EnumerateFiles(root) select file;
+
+            foreach (var file in files)
+            {
+                songNames.Add(file.ToLower());
+            }
+
+            Console.WriteLine(songNames.ToString());
+        }
+
+        public void CheckAnswer()
+        {
+            
         }
     }
 }

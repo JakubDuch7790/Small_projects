@@ -1,10 +1,13 @@
-﻿namespace PV178.Homeworks.HW03
+﻿using PV178.Homeworks.HW03.Utils;
+
+namespace PV178.Homeworks.HW03
 {
     class Program
     {
         static void Main(string[] args)
         {
             Game game = new Game();
+
             game.Start();
         }
     }

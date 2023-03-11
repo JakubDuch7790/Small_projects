@@ -10,34 +10,26 @@ namespace PV178.Homeworks.HW03.Utils
     /// <summary>
     /// Class responsible for reading songs from textfiles and handling user input.
     /// </summary>
-    public class KeyNotPressedEventArgs : EventArgs
-    {
-        public int Position { get; set; }
-    }
-    public class KeyPressedEventArgs : EventArgs
-    {
-        public char Key { get; set; }
-        public int Position { get; set; }
-    }
     public class Reader : IDisposable
     {
-        public event EventHandler KeyPressed;
-        public event EventHandler KeyNotPressed;
+        public event Action<char, int> KeyPressed;
+        public Action<int> KeyNotPressed;
 
-        //public void KeyPressedEventHandler(object source, KeyPressedEventArgs args);
+        public static int Points { get; private set; }
+        public static int ActualPosition { get; set; }
 
-        //public  void KeyNotPressedEventHandler(object source, KeyNotPressedEventArgs args);
-
-        public int Freq { get; set; }
+        public int ExpectedAnswer { get; set; }
+        public char PressedKey { get; set; }
         public string Text { get; set; }
+
         private const int Timeout = 500;
         private readonly Displayer displayer = new Displayer();
-
         private AutoResetEvent trackDone;
         private Thread checkingThread;
         private Thread gettingThread;
         private char? input;
         private bool end;
+
         private readonly Dictionary<char, Tone> tones = new Dictionary<char, Tone>();
 
         public Reader(string songName)
@@ -49,6 +41,7 @@ namespace PV178.Homeworks.HW03.Utils
                 checkingThread = new Thread(CheckInput) { IsBackground = true };
                 gettingThread = new Thread(GetInput) { IsBackground = true };
 
+                Points = Text.Length;
                 FillDictionary(tones);
             }
             else
@@ -77,6 +70,14 @@ namespace PV178.Homeworks.HW03.Utils
             Console.Clear();
         }
 
+        public void CheckAnswer(char key, int position)
+        {
+            if (!(Text[position] == PressedKey))
+            {
+                Points--;
+            }
+        }
+
         /// <summary>which key was pressed and what is actual reading position.
         /// </summary>
         /// Invokes event that says 
@@ -84,7 +85,7 @@ namespace PV178.Homeworks.HW03.Utils
         /// <param name="position">actual reading position</param>
         protected virtual void OnKeyPressed(char key, int position)
         {
-            KeyPressed?.Invoke(this, new KeyPressedEventArgs() {Key = key, Position = position});
+            KeyPressed?.Invoke(key, position);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace PV178.Homeworks.HW03.Utils
         /// <param name="position">actual reading position</param>
         protected virtual void OnKeyNotPressed(int position)
         {
-            KeyNotPressed?.Invoke(this, new KeyNotPressedEventArgs() { Position = position });
+            KeyNotPressed?.Invoke(position);
         }
 
         /// <summary>
@@ -103,6 +104,10 @@ namespace PV178.Homeworks.HW03.Utils
         {
             for (var i = -6; i < Text.Length; i++)
             {
+                ActualPosition = i;
+
+                ExpectedAnswer = Text[i + 6];
+
                 displayer.ActualDisplay(Text, i + 6);
                 Thread.Sleep(Timeout);
                 // First chars just skip (because animation)
@@ -135,6 +140,9 @@ namespace PV178.Homeworks.HW03.Utils
                 if (input != null && !end)
                 {
                     var pressedKey = (char)input;
+
+                    PressedKey = pressedKey;
+
                     if (tones.ContainsKey(pressedKey))
                     {
                         Sounder.MakeSound(tones[pressedKey].FrequencyOfTone);

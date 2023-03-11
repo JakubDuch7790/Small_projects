@@ -15,6 +15,9 @@ namespace PV178.Homeworks.HW03.Utils
         public void ActualDisplay(string text, int position)
         {
             Console.Clear();
+            Console.WriteLine($"Points: {Reader.Points}");
+            Console.WriteLine(Reader.ActualPosition);
+
             for (var i = position; i >= 0; i--)
             {
                 if (position - i > 12)

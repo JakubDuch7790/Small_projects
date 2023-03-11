@@ -13,13 +13,12 @@ namespace PV178.Homeworks.HW03.Utils
     public class Reader : IDisposable
     {
         public event Action<char, int> KeyPressed;
-        public Action<int> KeyNotPressed;
+        public event Action<int> KeyNotPressed;
 
         public static int Points { get; private set; }
         public static int ActualPosition { get; set; }
 
-        public int ExpectedAnswer { get; set; }
-        public char PressedKey { get; set; }
+        public char PressedKey { get; private set; }
         public string Text { get; set; }
 
         private const int Timeout = 500;
@@ -70,9 +69,20 @@ namespace PV178.Homeworks.HW03.Utils
             Console.Clear();
         }
 
-        public void CheckAnswer(char key, int position)
+        public void CheckAnswerWithPressedKey(char key, int position)
         {
-            if (!(Text[position] == PressedKey))
+            if ((Text[position] != PressedKey))
+            {
+                Points--;
+            }
+        }
+        public void CheckAnswerWithEmptySpace(int position)
+        {
+            if (Text[position] == ' ' && input != null)
+            {
+                Points--;
+            }
+            else
             {
                 Points--;
             }
@@ -105,8 +115,6 @@ namespace PV178.Homeworks.HW03.Utils
             for (var i = -6; i < Text.Length; i++)
             {
                 ActualPosition = i;
-
-                ExpectedAnswer = Text[i + 6];
 
                 displayer.ActualDisplay(Text, i + 6);
                 Thread.Sleep(Timeout);
@@ -145,7 +153,7 @@ namespace PV178.Homeworks.HW03.Utils
 
                     if (tones.ContainsKey(pressedKey))
                     {
-                        Sounder.MakeSound(tones[pressedKey].FrequencyOfTone);
+                        //Sounder.MakeCoolSound(tones[pressedKey].FrequencyOfTone);
                     }
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using PV178.Homeworks.HW03.Utils;
+using System.IO;
 
 namespace PV178.Homeworks.HW03
 {
@@ -8,7 +9,20 @@ namespace PV178.Homeworks.HW03
         {
             Game game = new Game();
 
-            game.Start();
+            Sounder.MakeCoolSound();
+            Sounder.MakeCoolSound();
+
+            Sounder.MakeCoolSound();
+
+            Sounder.MakeCoolSound();
+            Sounder.MakeCoolSound();
+            Sounder.MakeCoolSound();
+            Sounder.MakeCoolSound();
+            Sounder.MakeCoolSound();
+            Sounder.MakeCoolSound();
+
+
+            //game.Start();
         }
     }
 }

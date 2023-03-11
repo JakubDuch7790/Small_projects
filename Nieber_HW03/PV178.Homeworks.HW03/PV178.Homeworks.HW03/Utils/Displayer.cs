@@ -16,7 +16,6 @@ namespace PV178.Homeworks.HW03.Utils
         {
             Console.Clear();
             Console.WriteLine($"Points: {Reader.Points}");
-            Console.WriteLine(Reader.ActualPosition);
 
             for (var i = position; i >= 0; i--)
             {

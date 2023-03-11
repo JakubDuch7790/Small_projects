@@ -24,9 +24,13 @@ namespace PV178.Homeworks.HW03
 
             Points = reader.Text.Length;
 
-            reader.KeyPressed += reader.CheckAnswer;
+            reader.KeyPressed += reader.CheckAnswerWithPressedKey;
+            reader.KeyNotPressed += reader.CheckAnswerWithEmptySpace;
 
             reader.ReadKeys();
+
+            Console.WriteLine($"Congratulation, You have aquired {Reader.Points} points!");
+
 
         }
 

@@ -24,7 +24,6 @@ namespace PV178.Homeworks.HW03.Utils
         public static void MakeCoolSound(char key)
         {
             var sound = new SoundPlayer($@"C:\Users\Duško\source\repos\JakubDuch7790\Small_projects\Nieber_HW03\Sounds\Sounds\piano-{key}.wav");
-
             ThreadPool.QueueUserWorkItem(state =>
                 sound.PlaySync());
 

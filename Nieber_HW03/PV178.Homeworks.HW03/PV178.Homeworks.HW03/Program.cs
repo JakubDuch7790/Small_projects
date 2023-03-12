@@ -1,4 +1,5 @@
 ﻿using PV178.Homeworks.HW03.Utils;
+using System;
 using System.IO;
 
 namespace PV178.Homeworks.HW03
@@ -8,6 +9,8 @@ namespace PV178.Homeworks.HW03
         static void Main(string[] args)
         {
             Game game = new Game();
+
+            game.ChoseSong();
 
             game.Start();
         }

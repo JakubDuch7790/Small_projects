@@ -30,30 +30,24 @@ namespace PV178.Homeworks.HW03
             reader.ReadKeys();
 
             Console.WriteLine($"Congratulation, You have aquired {Reader.Points} points!");
-
-
         }
-
 
         public void ChoseSong()
         {
             List<string> songNames = new List<string>();
 
-            string root = Path.GetFullPath("Songs");
+            string root = "C:\\Users\\Duško\\source\\repos\\JakubDuch7790\\Small_projects\\Nieber_HW03\\Sounds\\Sounds";
 
-            var files = from file in Directory.EnumerateFiles(root) select file;
+            //var files = from file in Directory.EnumerateFiles(root) select file;
 
-            foreach (var file in files)
+            var filess = Directory.EnumerateFiles(root);
+
+            foreach (var file in filess)
             {
                 songNames.Add(file.ToLower());
             }
-
             Console.WriteLine(songNames.ToString());
-        }
 
-        public void CheckAnswer()
-        {
-            
         }
     }
 }

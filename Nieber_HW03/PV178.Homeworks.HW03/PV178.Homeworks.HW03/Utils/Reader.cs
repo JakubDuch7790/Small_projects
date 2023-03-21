@@ -153,7 +153,7 @@ namespace PV178.Homeworks.HW03.Utils
 
                     if (tones.ContainsKey(pressedKey))
                     {
-                        Sounder.MakeCoolSound(pressedKey);
+                        Sounder.MakeCoolSound(pressedKey, 300);
                         //Sounder.MakeSound(pressedKey);
                     }
                 }

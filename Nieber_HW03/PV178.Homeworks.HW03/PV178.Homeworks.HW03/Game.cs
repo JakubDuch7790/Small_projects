@@ -16,8 +16,6 @@ namespace PV178.Homeworks.HW03
         {
             string chosenSong;
 
-            Console.WriteLine("Choose song.");
-
             chosenSong = Console.ReadLine().ToLower();
 
             Reader reader = new Reader(chosenSong);
@@ -34,19 +32,29 @@ namespace PV178.Homeworks.HW03
 
         public void ChoseSong()
         {
-            List<string> songNames = new List<string>();
+            Console.WriteLine("Choose song.");
+            Console.WriteLine(" ");
 
-            string root = "C:\\Users\\Duško\\source\\repos\\JakubDuch7790\\Small_projects\\Nieber_HW03\\Sounds\\Sounds";
+            //List<string> songNames = new List<string>();
 
-            //var files = from file in Directory.EnumerateFiles(root) select file;
+            string root = "C:\\Users\\Duško\\source\\repos\\JakubDuch7790\\Small_projects\\Nieber_HW03\\PV178.Homeworks.HW03\\PV178.Homeworks.HW03\\Songs";
+            DirectoryInfo directoryInfo = new DirectoryInfo(root);
 
-            var filess = Directory.EnumerateFiles(root);
+            FileInfo[] songNames1 = directoryInfo.GetFiles();
 
-            foreach (var file in filess)
+            //var files = Directory.EnumerateFiles(root);
+
+            foreach (FileInfo f in songNames1)
             {
-                songNames.Add(file.ToLower());
+                Console.WriteLine(Path.GetFileNameWithoutExtension(f.FullName));
             }
-            Console.WriteLine(songNames.ToString());
+
+
+            //foreach (var file in files)
+            //{
+            //    songNames.Add(file.ToLower());
+            //}
+            //Console.WriteLine(songNames.Select(songNames.));
 
         }
     }

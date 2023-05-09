@@ -22,10 +22,10 @@ namespace PV178.Homeworks.HW03.Utils
                 Console.Beep(frequency, duration));
         }
         public static void MakeCoolSound(char key, int duration)
-        {
-            var sound = new SoundPlayer($@"C:\Users\Duško\source\repos\JakubDuch7790\Small_projects\Nieber_HW03\Sounds\Sounds\piano-{key}.wav");
+        {//C:\Users\jakub\source\repos\JakubDuch7790\Small_projects\Nieber_HW03\Sounds\Sounds
+            var sound = new SoundPlayer($@"C:\Users\jakub\source\repos\JakubDuch7790\Small_projects\Nieber_HW03\Sounds\Sounds\piano-{key}.wav");
             ThreadPool.QueueUserWorkItem(state =>
-                sound.PlaySync());
+                sound.Play());
 
             //sound.PlaySync();
         }

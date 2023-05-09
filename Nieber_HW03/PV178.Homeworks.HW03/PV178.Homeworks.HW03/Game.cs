@@ -37,7 +37,7 @@ namespace PV178.Homeworks.HW03
 
             //List<string> songNames = new List<string>();
 
-            string root = "C:\\Users\\Duško\\source\\repos\\JakubDuch7790\\Small_projects\\Nieber_HW03\\PV178.Homeworks.HW03\\PV178.Homeworks.HW03\\Songs";
+            string root = "C:\\Users\\jakub\\Source\\Repos\\JakubDuch7790\\Small_projects\\Nieber_HW03\\PV178.Homeworks.HW03\\PV178.Homeworks.HW03\\Songs\\";
             DirectoryInfo directoryInfo = new DirectoryInfo(root);
 
             FileInfo[] songNames1 = directoryInfo.GetFiles();
